@@ -49,7 +49,7 @@ export interface RnButtonProps {
 
 export interface RnTextProps extends TextProps {
   onPress?: () => void;
-  style: StyleProp<TextStyle>;
+  style?: StyleProp<TextStyle>;
   numberOfLines?: number;
   selectable?: boolean;
   children: ReactNode;

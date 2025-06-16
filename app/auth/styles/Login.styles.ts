@@ -3,7 +3,7 @@ import { fontsSize } from "@/constants/FontsSize";
 import { hp } from "@/utils";
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export default StyleSheet.create({
   title: {
     fontSize: fontsSize.large,
     fontWeight: "bold",
