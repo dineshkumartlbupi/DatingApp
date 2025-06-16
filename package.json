@@ -13,7 +13,8 @@
     "build": "expo prebuild",
     "archive": "eas build --platform ios && eas submit -p ios --latest",
     "bundle": "eas build -p android --profile production",
-    "release": "eas build -p android --profile preview"
+    "release": "eas build -p android --profile preview",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
@@ -42,12 +43,15 @@
     "expo-system-ui": "~5.0.8",
     "expo-web-browser": "~14.1.6",
     "formik": "^2.4.6",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-native": "0.79.3",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-modal": "^14.0.0-rc.1",
+    "react-native-phone-number-input": "^2.1.0",
     "react-native-reanimated": "~3.17.4",
     "react-native-responsive-screen": "^1.4.2",
     "react-native-safe-area-context": "5.4.0",

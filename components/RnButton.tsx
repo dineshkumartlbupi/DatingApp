@@ -1,4 +1,5 @@
 import { borders } from "@/constants/Borders";
+import { Colors } from "@/constants/Colors";
 import { fontsSize } from "@/constants/FontsSize";
 import { RnButtonProps } from "@/types";
 import { hp, wp } from "@/utils";
@@ -137,8 +138,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     height: hp(6.5),
     width: wp(92),
-    backgroundColor: "#6432ff",
-    borderRadius: borders.radius1,
+    backgroundColor: Colors.light.button,
+    borderRadius: borders.radius4,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
