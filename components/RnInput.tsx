@@ -1,4 +1,7 @@
+import { borders } from "@/constants/Borders";
+import { fontsSize } from "@/constants/FontsSize";
 import { RnInputProps } from "@/types";
+import { hp, wp } from "@/utils";
 import { Input } from "@rneui/themed";
 import React from "react";
 import { StyleSheet } from "react-native";
@@ -52,10 +55,10 @@ const RnInput: React.FC<RnInputProps> = ({
 const styles = StyleSheet.create({
   errorText: {
     color: "red",
-    fontSize: 12,
-    marginTop: 5,
-    marginBottom: 10,
-    marginLeft: 2,
+    fontSize: fontsSize.small,
+    marginTop: hp(1),
+    marginBottom: hp(2),
+    marginLeft: wp(1),
   },
   style: {},
   containerStyle: {},
@@ -63,9 +66,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1.5,
     borderWidth: 1.5,
     borderColor: "#ddd",
-    borderRadius: 8,
-    paddingHorizontal: 15,
-    height: 6.5,
+    borderRadius: borders.radius1,
+    paddingHorizontal: wp(4),
+    height: hp(6.5),
   },
 });
 

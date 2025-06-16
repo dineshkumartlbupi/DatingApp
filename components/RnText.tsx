@@ -1,3 +1,4 @@
+import { fontsSize } from "@/constants/FontsSize";
 import { RnTextProps } from "@/types";
 import React from "react";
 import { StyleSheet, Text } from "react-native";
@@ -9,13 +10,6 @@ const RnText: React.FC<RnTextProps> = ({
   selectable,
   children,
 }) => {
-  const styles = StyleSheet.create({
-    textStyle: {
-      color: "black",
-      fontSize: 16,
-    },
-  });
-
   return (
     <Text
       onPress={onPress}
@@ -28,5 +22,12 @@ const RnText: React.FC<RnTextProps> = ({
     </Text>
   );
 };
+
+const styles = StyleSheet.create({
+  textStyle: {
+    color: "black",
+    fontSize: fontsSize.regular,
+  },
+});
 
 export default RnText;

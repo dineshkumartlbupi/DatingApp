@@ -1,4 +1,6 @@
+import { fontsSize } from "@/constants/FontsSize";
 import { RnHeaderProps } from "@/types";
+import { wp } from "@/utils";
 import { Header } from "@rneui/base";
 import React from "react";
 import { StyleSheet } from "react-native";
@@ -16,19 +18,6 @@ const RnHeader: React.FC<RnHeaderProps> = ({
   leftContainerStyle,
   rightContainerStyle,
 }) => {
-  const styles = StyleSheet.create({
-    statusbar: {
-      backgroundColor: "#6432ff",
-    },
-    sideContainerStyle: {
-      marginHorizontal: 16,
-      justifyContent: "center",
-    },
-    centerTextStyle: {
-      color: "white",
-      fontSize: 24,
-    },
-  });
   return (
     <Header
       statusBarProps={statusbar ?? styles.statusbar}
@@ -46,5 +35,19 @@ const RnHeader: React.FC<RnHeaderProps> = ({
     />
   );
 };
+
+const styles = StyleSheet.create({
+  statusbar: {
+    backgroundColor: "#6432ff",
+  },
+  sideContainerStyle: {
+    marginHorizontal: wp(4),
+    justifyContent: "center",
+  },
+  centerTextStyle: {
+    color: "white",
+    fontSize: fontsSize.large,
+  },
+});
 
 export default RnHeader;

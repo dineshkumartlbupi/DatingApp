@@ -1,4 +1,7 @@
+import { borders } from "@/constants/Borders";
+import { fontsSize } from "@/constants/FontsSize";
 import { RnButtonProps } from "@/types";
+import { hp, wp } from "@/utils";
 import { FontAwesome6 } from "@expo/vector-icons";
 import React from "react";
 import {
@@ -22,53 +25,6 @@ const RnButton: React.FC<RnButtonProps> = ({
   noRightIcon,
   rightIconColor,
 }) => {
-  const styles = StyleSheet.create({
-    whiteColor: {
-      color: "white",
-    },
-    buttonContainer: {
-      height: 6.5,
-      width: 92,
-      backgroundColor: "#6432ff",
-      borderRadius: 8,
-      alignItems: "center",
-      justifyContent: "center",
-      alignSelf: "center",
-      shadowColor: "black",
-      shadowOffset: {
-        width: 0,
-        height: 3,
-      },
-      shadowOpacity: 0.27,
-      shadowRadius: 4.65,
-      elevation: 6,
-    },
-    iconContainer: {
-      alignItems: "flex-start",
-      paddingHorizontal: 16,
-    },
-    disabledButton: {
-      backgroundColor: "gray",
-    },
-    buttonText: {
-      color: "white",
-      fontSize: 16,
-    },
-    iconText: {
-      flex: 1,
-    },
-    icon: {
-      fontSize: 20,
-      color: "white",
-      marginRight: 24,
-      marginLeft: 24,
-    },
-    rowView: {
-      flexDirection: "row",
-      alignItems: "center",
-    },
-  });
-
   return (
     <>
       {!loading ? (
@@ -173,5 +129,52 @@ const RnButton: React.FC<RnButtonProps> = ({
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  whiteColor: {
+    color: "white",
+  },
+  buttonContainer: {
+    height: hp(6.5),
+    width: wp(92),
+    backgroundColor: "#6432ff",
+    borderRadius: borders.radius1,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+  },
+  iconContainer: {
+    alignItems: "flex-start",
+    paddingHorizontal: wp(4),
+  },
+  disabledButton: {
+    backgroundColor: "gray",
+  },
+  buttonText: {
+    color: "white",
+    fontSize: fontsSize.regular,
+  },
+  iconText: {
+    flex: 1,
+  },
+  icon: {
+    fontSize: fontsSize.medium,
+    color: "white",
+    marginRight: wp(4),
+    marginLeft: wp(4),
+  },
+  rowView: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+});
 
 export default RnButton;
