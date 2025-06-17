@@ -5,6 +5,7 @@ import RnProgressBar from "@/components/RnProgressBar";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
 import { EmailValues } from "@/types";
+import { router } from "expo-router";
 import { Formik } from "formik";
 import React, { useState } from "react";
 import { View } from "react-native";
@@ -17,7 +18,9 @@ const emailSchema = Yup.object().shape({
 export default function Email() {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleEmailSubmit = async (values: EmailValues) => {};
+  const handleEmailSubmit = async (values: EmailValues) => {
+    router.push("/auth/age");
+  };
 
   return (
     <ScrollContainer topBar={<RnProgressBar progress={4 / 11} />}>

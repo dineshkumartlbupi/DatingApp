@@ -19,7 +19,7 @@ export default function Name() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleNameSubmit = async (values: NameValues) => {
-    router.replace("/auth/email");
+    router.push("/auth/email");
   };
 
   return (

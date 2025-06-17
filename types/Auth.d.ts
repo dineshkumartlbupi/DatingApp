@@ -13,3 +13,7 @@ export interface NameValues {
 export interface EmailValues {
   email: string;
 }
+
+export interface AgeValues {
+  age: number;
+}

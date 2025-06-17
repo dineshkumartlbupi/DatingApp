@@ -112,3 +112,15 @@ export interface RnProgressBarProps {
   width?: number;
   style?: StyleProp<ViewStyle>;
 }
+
+export interface RnWheelPickerProps {
+  dataSource: string[];
+  selectedIndex: number;
+  renderItem: (data: string, index: number) => ReactNode;
+  onValueChange: (data: string | undefined, selectedIndex: number) => void;
+  wrapperHeight?: number;
+  wrapperBackground?: string;
+  itemHeight?: number;
+  highlightColor?: string;
+  highlightBorderWidth?: number;
+}

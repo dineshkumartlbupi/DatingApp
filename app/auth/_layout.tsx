@@ -45,6 +45,12 @@ export default function AuthLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="age"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }
