@@ -1,5 +1,5 @@
 import { IconNode, TextProps, ViewProps } from "@rneui/base";
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 import {
   KeyboardTypeOptions,
   StatusBarProps,
@@ -8,6 +8,7 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native";
+import { ToastPosition } from "react-native-toast-message";
 
 export interface RnInputProps {
   value: string;
@@ -18,14 +19,21 @@ export interface RnInputProps {
   onFocus?(e: any): void;
   keyboardType?: KeyboardTypeOptions;
   error?: string;
-  errorStyle?: TextStyle;
+  errorStyle?: StyleProp<TextStyle>;
   secureTextEntry?: boolean;
-  style?: TextStyle;
-  containerStyle?: TextStyle;
-  inputContainerStyle?: TextStyle;
+  style?: StyleProp<TextStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
+  inputContainerStyle?: StyleProp<ViewStyle>;
   placeholder: string;
   leftIcon?: IconNode;
   rightIcon?: IconNode;
+}
+
+export interface RnPhoneInputProps {
+  value: string;
+  onChangeText(e: string): void;
+  error?: string;
+  errorStyle?: StyleProp<TextStyle>;
 }
 
 export interface RnButtonProps {
@@ -58,7 +66,7 @@ export interface RnTextProps extends TextProps {
 export interface RnContainerProps {
   topBar?: ReactElement;
   children?: ReactNode;
-  customStyle?: ViewStyle;
+  customStyle?: StyleProp<ViewStyle>;
   props?: ViewProps;
 }
 
@@ -69,10 +77,10 @@ export interface RnHeaderProps {
   rightComponent?: ReactElement;
   centerText?: string;
   backgroundColor?: string;
-  containerStyle?: ViewStyle;
-  centerContainerStyle?: ViewStyle;
-  leftContainerStyle?: ViewStyle;
-  rightContainerStyle?: ViewStyle;
+  containerStyle?: StyleProp<ViewStyle>;
+  centerContainerStyle?: StyleProp<ViewStyle>;
+  leftContainerStyle?: StyleProp<ViewStyle>;
+  rightContainerStyle?: StyleProp<ViewStyle>;
 }
 
 export interface RnModalProps {

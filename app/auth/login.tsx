@@ -1,12 +1,15 @@
 import RnButton from "@/components/RnButton";
-import RnInput from "@/components/RnInput";
+import RnPhoneInput from "@/components/RnPhoneInput";
 import ScrollContainer from "@/components/RnScrollContainer";
 // import { signIn } from "@/firebase/auth";
 import styles from "@/app/auth/styles/Login.styles";
 import { LoginValues } from "@/types";
+// import { SocialIcon } from "@rneui/base";
+import { SocialIcon } from "@rneui/themed";
 import { Formik } from "formik";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import PhoneInput from "react-native-phone-number-input";
 import * as Yup from "yup";
 
 const loginSchema = Yup.object().shape({
@@ -31,9 +34,10 @@ export default function Login() {
     // }
   };
 
+  const phoneInput = useRef<PhoneInput>(null);
+
   return (
     <ScrollContainer>
-      <Text style={styles.title}>Welcome Back</Text>
       <Formik
         initialValues={{ phone: "" }}
         validationSchema={loginSchema}
@@ -49,22 +53,37 @@ export default function Login() {
           errors,
           resetForm,
         }) => (
-          <View>
-            <RnInput
-              value={values.phone}
-              placeholder="Phone"
-              onChangeText={handleChange("phone")}
-              onBlur={handleBlur("phone")}
-              error={errors.phone as string}
-              keyboardType="phone-pad"
-            />
-            <RnButton
-              title="Login"
-              style={[styles.button, styles.buttonText]}
-              onPress={handleSubmit}
-              disabled={isLoading}
-              loading={isLoading}
-            />
+          <View style={styles.innerContainer}>
+            <View>
+              <Text style={styles.title}>{`Let's start with your number`}</Text>
+              <RnPhoneInput
+                ref={phoneInput}
+                value={values.phone}
+                onChangeText={(text) => {
+                  handleChange("phone")(text);
+                }}
+                error={errors.phone}
+              />
+              <RnButton
+                title="Continue"
+                style={[styles.button]}
+                onPress={() => {
+                  handleSubmit();
+                  console.log("errors", errors);
+                }}
+                disabled={isLoading}
+                loading={isLoading}
+              />
+              <View style={styles.orContainer}>
+                <View style={styles.orLine} />
+                <Text style={styles.orText}>OR</Text>
+                <View style={styles.orLine} />
+              </View>
+              <View style={styles.socialContainer}>
+                <SocialIcon type="google" />
+                <SocialIcon type="apple" light />
+              </View>
+            </View>
             <View style={styles.footer}>
               <Text>{`Don't have an account? `}</Text>
               <TouchableOpacity
@@ -73,9 +92,7 @@ export default function Login() {
                 }}
                 disabled={isLoading}
               >
-                <Text style={[styles.link, isLoading && styles.linkDisabled]}>
-                  Sign Up
-                </Text>
+                <Text style={styles.link}>Sign Up</Text>
               </TouchableOpacity>
             </View>
           </View>
