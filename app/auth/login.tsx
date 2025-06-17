@@ -4,7 +4,6 @@ import ScrollContainer from "@/components/RnScrollContainer";
 // import { signIn } from "@/firebase/auth";
 import styles from "@/app/auth/styles/Login.styles";
 import { LoginValues } from "@/types";
-// import { SocialIcon } from "@rneui/base";
 import { SocialIcon } from "@rneui/themed";
 import { Formik } from "formik";
 import { useRef, useState } from "react";

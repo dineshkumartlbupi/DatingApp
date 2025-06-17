@@ -73,8 +73,8 @@ export interface RnContainerProps {
 export interface RnHeaderProps {
   statusbar?: StatusBarProps;
   barStyle?: StatusBarStyle;
-  leftComponent?: ReactElement;
-  rightComponent?: ReactElement;
+  leftComponent?: HeaderSubComponent;
+  rightComponent?: HeaderSubComponent;
   centerText?: string;
   backgroundColor?: string;
   containerStyle?: StyleProp<ViewStyle>;

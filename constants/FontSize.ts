@@ -1,6 +1,6 @@
 import { hp, wp } from "@/utils";
 
-export const fontsSize = {
+export const FontSize = {
   extraSmall: wp(3),
   regular: wp(3.5),
   small: wp(4),

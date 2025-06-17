@@ -19,10 +19,13 @@ export default function RootLayout() {
 
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    InterRegular: require("../assets/fonts/Inter-Regular.ttf"),
+    InterMedium: require("../assets/fonts/Inter-Medium.ttf"),
+    InterSemiBold: require("../assets/fonts/Inter-SemiBold.ttf"),
+    InterBold: require("../assets/fonts/Inter-Bold.ttf"),
   });
 
   if (!loaded) {
-    // Async font loading only occurs in development.
     return null;
   }
 

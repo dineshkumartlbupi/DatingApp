@@ -1,5 +1,5 @@
-import { borders } from "@/constants/Borders";
-import { fontsSize } from "@/constants/FontsSize";
+import { Borders } from "@/constants/Borders";
+import { FontSize } from "@/constants/FontSize";
 import { RnInputProps } from "@/types";
 import { hp, wp } from "@/utils";
 import { Input } from "@rneui/themed";
@@ -55,7 +55,7 @@ const RnInput: React.FC<RnInputProps> = ({
 const styles = StyleSheet.create({
   errorText: {
     color: "red",
-    fontSize: fontsSize.small,
+    fontSize: FontSize.small,
     marginTop: hp(1),
     marginBottom: hp(2),
     marginLeft: wp(1),
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1.5,
     borderWidth: 1.5,
     borderColor: "#ddd",
-    borderRadius: borders.radius1,
+    borderRadius: Borders.radius1,
     paddingHorizontal: wp(4),
     height: hp(6.5),
   },

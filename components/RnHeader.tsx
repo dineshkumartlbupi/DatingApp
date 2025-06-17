@@ -1,4 +1,4 @@
-import { fontsSize } from "@/constants/FontsSize";
+import { FontSize } from "@/constants/FontSize";
 import { RnHeaderProps } from "@/types";
 import { wp } from "@/utils";
 import { Header } from "@rneui/base";
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   centerTextStyle: {
     color: "white",
-    fontSize: fontsSize.large,
+    fontSize: FontSize.large,
   },
 });
 
