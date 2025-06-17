@@ -10,7 +10,6 @@ import {
   ActivityIndicator,
   StyleSheet,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from "react-native";
 import Text from "./RnText";
@@ -28,8 +27,6 @@ const RnButton: React.FC<RnButtonProps> = ({
   noRightIcon,
   rightIconColor,
 }) => {
-  const colorScheme = useColorScheme();
-
   return (
     <>
       {!loading ? (

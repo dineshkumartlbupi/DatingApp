@@ -1,8 +1,7 @@
+import styles from "@/app/auth/styles/Login.styles";
 import RnButton from "@/components/RnButton";
 import RnPhoneInput from "@/components/RnPhoneInput";
 import ScrollContainer from "@/components/RnScrollContainer";
-// import { signIn } from "@/firebase/auth";
-import styles from "@/app/auth/styles/Login.styles";
 import { LoginValues } from "@/types";
 import { SocialIcon } from "@rneui/themed";
 import { Formik } from "formik";
@@ -44,14 +43,7 @@ export default function Login() {
         validateOnChange
         validateOnMount={false}
       >
-        {({
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          values,
-          errors,
-          resetForm,
-        }) => (
+        {({ handleChange, handleSubmit, values, errors, resetForm }) => (
           <View style={styles.innerContainer}>
             <View>
               <Text style={styles.title}>{`Let's start with your number`}</Text>
