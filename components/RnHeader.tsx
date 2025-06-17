@@ -9,6 +9,7 @@ import RnText from "./RnText";
 const RnHeader: React.FC<RnHeaderProps> = ({
   statusbar,
   barStyle,
+  centerComponent,
   leftComponent,
   rightComponent,
   centerText,
@@ -24,7 +25,11 @@ const RnHeader: React.FC<RnHeaderProps> = ({
       barStyle={barStyle ?? "light-content"}
       leftComponent={leftComponent}
       centerComponent={
-        <RnText style={styles.centerTextStyle}>{centerText}</RnText>
+        centerText ? (
+          <RnText style={styles.centerTextStyle}>{centerText}</RnText>
+        ) : (
+          centerComponent
+        )
       }
       rightComponent={rightComponent}
       backgroundColor={backgroundColor ?? styles.statusbar.backgroundColor}
