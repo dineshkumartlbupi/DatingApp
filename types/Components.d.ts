@@ -97,3 +97,18 @@ export interface RnToastProps {
   heading?: string;
   position?: ToastPosition;
 }
+
+export interface RnOtpProps {
+  verifyCode(input: string): void;
+  isError: boolean;
+  value: string;
+  cell?: number;
+  style?: ViewStyle;
+}
+
+export interface RnProgressBarProps {
+  progress: number;
+  height?: number;
+  width?: number;
+  style?: StyleProp<ViewStyle>;
+}

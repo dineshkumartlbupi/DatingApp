@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/Colors";
 import { FontSize } from "@/constants/FontSize";
 import { RnHeaderProps } from "@/types";
 import { wp } from "@/utils";
@@ -43,14 +44,14 @@ const RnHeader: React.FC<RnHeaderProps> = ({
 
 const styles = StyleSheet.create({
   statusbar: {
-    backgroundColor: "#6432ff",
+    backgroundColor: Colors.light.background,
   },
   sideContainerStyle: {
     marginHorizontal: wp(4),
     justifyContent: "center",
   },
   centerTextStyle: {
-    color: "white",
+    color: Colors.light.blackText,
     fontSize: FontSize.large,
   },
 });

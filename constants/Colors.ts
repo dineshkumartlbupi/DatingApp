@@ -1,5 +1,6 @@
 export const Colors = {
   light: {
+    primary: "#76CABB",
     blackText: "#000",
     greenText: "#76CABB",
     whiteText: "#FFF",
@@ -8,8 +9,10 @@ export const Colors = {
     icon: "#000",
     tabIconDefault: "#687076",
     button: "#76CABB",
+    track: "#FFE9F1",
   },
   dark: {
+    primary: "#76CABB",
     blackText: "#000",
     greenText: "#76CABB",
     whiteText: "#FFF",
@@ -18,5 +21,6 @@ export const Colors = {
     icon: "#000",
     tabIconDefault: "#687076",
     button: "#76CABB",
+    track: "#FFE9F1",
   },
 };

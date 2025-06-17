@@ -3,7 +3,13 @@ export interface LoginValues {
 }
 
 export interface SignupValues {
+  phone: string;
+}
+
+export interface NameValues {
   name: string;
+}
+
+export interface EmailValues {
   email: string;
-  password: string;
 }

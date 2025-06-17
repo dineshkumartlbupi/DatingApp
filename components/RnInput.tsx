@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
   errorText: {
     color: "red",
     fontSize: FontSize.small,
-    marginTop: hp(1),
     marginBottom: hp(2),
     marginLeft: wp(1),
   },
