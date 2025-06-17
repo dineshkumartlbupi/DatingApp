@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
   },
   whiteText: {
     color: Colors.light.whiteText,
-    fontSize: FontSize.large,
+    fontSize: FontSize.medium,
     fontFamily: FontFamily.semiBold,
   },
   iconText: {
