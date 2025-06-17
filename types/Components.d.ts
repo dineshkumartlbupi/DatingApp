@@ -97,3 +97,30 @@ export interface RnToastProps {
   heading?: string;
   position?: ToastPosition;
 }
+
+export interface RnOtpProps {
+  verifyCode(input: string): void;
+  isError: boolean;
+  value: string;
+  cell?: number;
+  style?: ViewStyle;
+}
+
+export interface RnProgressBarProps {
+  progress: number;
+  height?: number;
+  width?: number;
+  style?: StyleProp<ViewStyle>;
+}
+
+export interface RnWheelPickerProps {
+  dataSource: string[];
+  selectedIndex: number;
+  renderItem: (data: string, index: number) => ReactNode;
+  onValueChange: (data: string | undefined, selectedIndex: number) => void;
+  wrapperHeight?: number;
+  wrapperBackground?: string;
+  itemHeight?: number;
+  highlightColor?: string;
+  highlightBorderWidth?: number;
+}
