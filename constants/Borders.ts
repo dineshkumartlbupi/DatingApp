@@ -3,4 +3,5 @@ export const Borders = {
   radius2: 16,
   radius3: 20,
   radius4: 90,
+  circle:50
 };
