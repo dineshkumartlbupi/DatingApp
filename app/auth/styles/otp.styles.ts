@@ -4,7 +4,7 @@ import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+export default (theme: 'light' | 'dark') => StyleSheet.create({
   innerContainer: {
     flex: 1,
     marginBottom: hp(2),
@@ -36,15 +36,14 @@ export default StyleSheet.create({
     textAlign: "center",
     marginVertical: hp(1),
   },
-
-  link: {
-    color: Colors.light.greenText,
+    link: {
+    color: Colors[theme].greenText,
     fontFamily: FontFamily.bold,
     alignSelf: "center",
   },
   errorText: {
-    color: Colors.light.redText,
-    fontSize: FontSize.small,
+    color: Colors[theme].redText,
+    fontSize: FontSize.extraSmall,
     textAlign: "center",
     marginBottom: hp(1),
   },

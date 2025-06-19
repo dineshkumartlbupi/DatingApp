@@ -2,6 +2,7 @@ import { Borders } from "@/constants/Borders";
 import { Colors } from "@/constants/Colors";
 import { FontFamily } from "@/constants/FontFamily";
 import { FontSize } from "@/constants/FontSize";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { RnButtonProps } from "@/types";
 import { hp, wp } from "@/utils";
 import { FontAwesome6 } from "@expo/vector-icons";
@@ -27,6 +28,65 @@ const RnButton: React.FC<RnButtonProps> = ({
   noRightIcon,
   rightIconColor,
 }) => {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+
+  const styles = StyleSheet.create({
+    whiteColor: {
+      color: Colors[theme].whiteText,
+    },
+    buttonContainer: {
+      height: hp(6.5),
+      width: wp(92),
+      backgroundColor: Colors[theme].button,
+      borderRadius: Borders.circle,
+      alignItems: "center",
+      justifyContent: "center",
+      alignSelf: "center",
+      shadowColor: "black",
+      shadowOffset: {
+        width: 0,
+        height: 3,
+      },
+      shadowOpacity: 0.27,
+      shadowRadius: 4.65,
+      elevation: 6,
+    },
+    iconContainer: {
+      alignItems: "flex-start",
+      paddingHorizontal: wp(4),
+    },
+    leftIconContainer: {
+      backgroundColor: Colors[theme].background,
+      width: wp(10),
+      height: wp(10),
+      borderRadius: Borders.circle,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    disabledButton: {
+      backgroundColor: "gray",
+    },
+    whiteText: {
+      color: Colors[theme].whiteText,
+      fontSize: FontSize.medium,
+      fontFamily: FontFamily.semiBold,
+    },
+    iconText: {
+      flex: 1,
+      textAlign: "center",
+    },
+    icon: {
+      fontSize: FontSize.medium,
+      color: Colors[theme].button,
+      marginLeft: wp(4),
+    },
+    rowView: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+  });
+
   return (
     <>
       {!loading ? (
@@ -133,61 +193,5 @@ const RnButton: React.FC<RnButtonProps> = ({
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  whiteColor: {
-    color: "white",
-  },
-  buttonContainer: {
-    height: hp(6.5),
-    width: wp(92),
-    backgroundColor: Colors.light.button,
-    borderRadius: Borders.circle,
-    alignItems: "center",
-    justifyContent: "center",
-    alignSelf: "center",
-    shadowColor: "black",
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 6,
-  },
-  iconContainer: {
-    alignItems: "flex-start",
-    paddingHorizontal: wp(4),
-  },
-  leftIconContainer: {
-    backgroundColor: Colors.light.background,
-    width: wp(10),
-    height: wp(10),
-    borderRadius: Borders.circle,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  disabledButton: {
-    backgroundColor: "gray",
-  },
-  whiteText: {
-    color: Colors.light.whiteText,
-    fontSize: FontSize.medium,
-    fontFamily: FontFamily.semiBold,
-  },
-  iconText: {
-    flex: 1,
-    textAlign: "center",
-  },
-  icon: {
-    fontSize: FontSize.medium,
-    color: Colors.light.button,
-    marginLeft: wp(4),
-  },
-  rowView: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-});
 
 export default RnButton;

@@ -1,9 +1,10 @@
-import styles from "@/app/auth/styles/signup.styles";
+import createStyles from "@/app/auth/styles/signup.styles";
 import RnButton from "@/components/RnButton";
 import RnPhoneInput from "@/components/RnPhoneInput";
 import RnProgressBar from "@/components/RnProgressBar";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { SignupValues } from "@/types";
 import { router } from "expo-router";
 import { Formik } from "formik";
@@ -17,6 +18,9 @@ const signupSchema = Yup.object().shape({
 });
 
 export default function Signup() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
   const [isLoading, setIsLoading] = useState(false);
   const phoneInput = useRef<PhoneInput>(null);
 
@@ -68,7 +72,7 @@ export default function Signup() {
               />
             </View>
             <View style={styles.footer}>
-              <RnText>Already have an account? </RnText>
+              <RnText>{`Already have an account? `}</RnText>
               <TouchableOpacity
                 onPress={() => {
                   resetForm();

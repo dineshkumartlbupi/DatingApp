@@ -1,9 +1,10 @@
-import styles from "@/app/auth/styles/email.styles";
+import createStyles from "@/app/auth/styles/email.styles";
 import RnButton from "@/components/RnButton";
 import RnInput from "@/components/RnInput";
 import RnProgressBar from "@/components/RnProgressBar";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { EmailValues } from "@/types";
 import { router } from "expo-router";
 import { Formik } from "formik";
@@ -16,6 +17,9 @@ const emailSchema = Yup.object().shape({
 });
 
 export default function Email() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleEmailSubmit = async (values: EmailValues) => {

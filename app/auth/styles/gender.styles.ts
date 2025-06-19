@@ -5,7 +5,7 @@ import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+export default (theme: 'light' | 'dark') => StyleSheet.create({
   innerContainer: {
     flex: 1,
     justifyContent: "flex-start",
@@ -33,18 +33,20 @@ export default StyleSheet.create({
   genderContainer: {
     alignSelf: "center",
   },
-  genderOption: {
+  genderButton: {
     alignItems: "center",
     padding: hp(2),
     marginBottom: hp(2),
-    backgroundColor: "#F5F5F5",
     justifyContent: "center",
     width: wp(25),
     height: wp(25),
     borderRadius: Borders.circle,
+    borderWidth: 2,
+    borderColor: Colors[theme].primary,
+    backgroundColor: "transparent",
   },
-  genderOptionSelected: {
-    backgroundColor: Colors.light.primary,
+  selectedGenderButton: {
+    backgroundColor: Colors[theme].primary,
   },
   genderIcon: {
     marginBottom: hp(1),
@@ -55,12 +57,12 @@ export default StyleSheet.create({
     fontSize: FontSize.small,
     fontFamily: FontFamily.medium,
   },
-  genderTextSelected: {
-    color: "#FFFFFF",
+  selectedGenderText: {
+    color: Colors[theme].whiteText,
   },
   errorText: {
-    color: Colors.light.redText,
-    fontSize: FontSize.small,
+    color: Colors[theme].redText,
+    fontSize: FontSize.extraSmall,
     textAlign: "center",
     marginBottom: hp(1),
   },

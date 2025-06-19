@@ -1,12 +1,17 @@
-import styles from "@/app/auth/styles/Onboarding.styles";
+import createStyles from "@/app/auth/styles/Onboarding.styles";
 import Container from "@/components/RnContainer";
 import RnText from "@/components/RnText";
 import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { FontAwesome } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { ImageBackground, TouchableOpacity, View } from "react-native";
 
 export default function Onboarding({ navigation }: any) {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
+
   return (
     <Container>
       <ImageBackground
@@ -22,7 +27,11 @@ export default function Onboarding({ navigation }: any) {
           }}
         >
           <View style={styles.iconContainer}>
-            <FontAwesome name="google" size={24} color={Colors.light.redText} />
+            <FontAwesome
+              name="google"
+              size={24}
+              color={Colors[theme].redText}
+            />
           </View>
           <RnText style={styles.socialwhiteText}>Login with Google</RnText>
         </TouchableOpacity>
@@ -37,7 +46,7 @@ export default function Onboarding({ navigation }: any) {
             <FontAwesome
               name="apple"
               size={24}
-              color={Colors.light.blackText}
+              color={Colors[theme].blackText}
             />
           </View>
           <RnText style={styles.socialwhiteText}>Login with Apple</RnText>

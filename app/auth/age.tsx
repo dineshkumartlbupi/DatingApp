@@ -1,13 +1,14 @@
-import styles from "@/app/auth/styles/age.styles";
+import createStyles from "@/app/auth/styles/age.styles";
 import RnButton from "@/components/RnButton";
 import RnProgressBar from "@/components/RnProgressBar";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
 import RnWheelPicker from "@/components/RnWheelPicker";
-import { AgeValues } from "@/types/Auth";
-import { useRouter } from "expo-router";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { AgeValues } from "@/types";
+import { router } from "expo-router";
 import { Formik } from "formik";
-import React, { useState } from "react";
+import { useState } from "react";
 import { View } from "react-native";
 import * as Yup from "yup";
 
@@ -25,8 +26,10 @@ const ageOptions = Array.from({ length: AGE_MAX - AGE_MIN + 1 }, (_, i) =>
 );
 
 export default function Age() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
 
   const handleAgeSubmit = async (values: AgeValues) => {
     setIsLoading(true);

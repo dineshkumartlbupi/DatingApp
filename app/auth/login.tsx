@@ -1,8 +1,9 @@
-import styles from "@/app/auth/styles/Login.styles";
+import createStyles from "@/app/auth/styles/Login.styles";
 import RnButton from "@/components/RnButton";
 import RnPhoneInput from "@/components/RnPhoneInput";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { LoginValues } from "@/types";
 import { SocialIcon } from "@rneui/base";
 import { router } from "expo-router";
@@ -17,6 +18,9 @@ const loginSchema = Yup.object().shape({
 });
 
 export default function Login() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async (values: LoginValues) => {

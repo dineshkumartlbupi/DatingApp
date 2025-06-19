@@ -3,7 +3,7 @@ import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+export default (theme: 'light' | 'dark') => StyleSheet.create({
   innerContainer: {
     flex: 1,
     justifyContent: "flex-start",

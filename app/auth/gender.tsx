@@ -1,4 +1,4 @@
-import styles from "@/app/auth/styles/gender.styles";
+import createStyles from "@/app/auth/styles/gender.styles";
 import FemaleSvg from "@/assets/svg/Female.svg";
 import MaleSvg from "@/assets/svg/Male.svg";
 import OtherSvg from "@/assets/svg/Other.svg";
@@ -7,21 +7,25 @@ import RnProgressBar from "@/components/RnProgressBar";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
 import { Colors } from "@/constants/Colors";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { GenderValues } from "@/types";
 import { router } from "expo-router";
 import { Formik } from "formik";
-import React, { useState } from "react";
-import { Pressable, View } from "react-native";
+import { useState } from "react";
+import { TouchableOpacity, View } from "react-native";
 import * as Yup from "yup";
 
 // Validation schema
-const GenderSchema = Yup.object().shape({
+const genderSchema = Yup.object().shape({
   gender: Yup.string()
     .oneOf(["male", "female", "other"], "Please select a valid gender")
     .required("Gender is required"),
 });
 
 export default function Gender() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGenderSubmit = async (values: {
@@ -48,21 +52,23 @@ export default function Gender() {
   ) => {
     const isSelected = selectedGender === gender;
     return (
-      <Pressable
+      <TouchableOpacity
         onPress={() => setFieldValue("gender", isSelected ? "" : gender)}
-        style={[styles.genderOption, isSelected && styles.genderOptionSelected]}
+        style={[styles.genderButton, isSelected && styles.selectedGenderButton]}
       >
         <View style={styles.genderIcon}>
           <Icon
-            fill={isSelected ? Colors.light.whiteText : Colors.light.blackText}
+            fill={
+              isSelected ? Colors[theme].whiteText : Colors[theme].blackText
+            }
           />
         </View>
         <RnText
-          style={[styles.genderText, isSelected && styles.genderTextSelected]}
+          style={[styles.genderText, isSelected && styles.selectedGenderText]}
         >
           {label}
         </RnText>
-      </Pressable>
+      </TouchableOpacity>
     );
   };
 
@@ -70,7 +76,7 @@ export default function Gender() {
     <ScrollContainer topBar={<RnProgressBar progress={6 / 11} />}>
       <Formik
         initialValues={{ gender: "" }}
-        validationSchema={GenderSchema}
+        validationSchema={genderSchema}
         onSubmit={handleGenderSubmit}
       >
         {({ values, setFieldValue, handleSubmit, errors }) => (

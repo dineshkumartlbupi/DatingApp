@@ -4,7 +4,7 @@ import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+export default (theme: 'light' | 'dark') => StyleSheet.create({
   innerContainer: {
     flex: 1,
     justifyContent: "flex-start",
@@ -42,7 +42,7 @@ export default StyleSheet.create({
     backgroundColor: "#F5F5F5",
   },
   optionSelected: {
-    backgroundColor: Colors.light.primary,
+    backgroundColor: Colors[theme].primary,
   },
   optionText: {
     fontSize: FontSize.small,
@@ -50,11 +50,11 @@ export default StyleSheet.create({
     marginLeft: wp(4),
   },
   optionTextSelected: {
-    color: "#FFFFFF",
+    color: Colors[theme].whiteText,
   },
   errorText: {
-    color: Colors.light.redText,
-    fontSize: FontSize.small,
+    color: Colors[theme].redText,
+    fontSize: FontSize.extraSmall,
     textAlign: "center",
     marginBottom: hp(1),
   },

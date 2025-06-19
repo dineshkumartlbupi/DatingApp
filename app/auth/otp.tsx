@@ -1,9 +1,10 @@
-import styles from "@/app/auth/styles/otp.styles";
+import createStyles from "@/app/auth/styles/otp.styles";
 import RnButton from "@/components/RnButton";
 import RnOtp from "@/components/RnOtp";
 import RnProgressBar from "@/components/RnProgressBar";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { router, useLocalSearchParams } from "expo-router";
 import { Formik } from "formik";
 import React, { useState } from "react";
@@ -17,6 +18,9 @@ const otpSchema = Yup.object().shape({
 });
 
 export default function OtpScreen() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
   const { phone } = useLocalSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const phoneNumber = phone;

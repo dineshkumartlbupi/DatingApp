@@ -1,26 +1,26 @@
-import styles from "@/app/auth/styles/lookingFor.styles";
+import createStyles from "@/app/auth/styles/lookingFor.styles";
 import RnButton from "@/components/RnButton";
 import RnProgressBar from "@/components/RnProgressBar";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
-import { LookingForValues } from "@/types/Auth";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { LookingForValues } from "@/types";
 import { router } from "expo-router";
 import { Formik } from "formik";
-import React, { useState } from "react";
-import { Pressable, View } from "react-native";
+import { useState } from "react";
+import { TouchableOpacity, View } from "react-native";
 import * as Yup from "yup";
 
-// Validation schema
-const LookingForSchema = Yup.object().shape({
+const lookingForSchema = Yup.object().shape({
   lookingFor: Yup.string()
-    .oneOf(
-      ["relationship", "casual", "notSure", "marriage"],
-      "Please select a valid option"
-    )
-    .required("Please select what you're looking for"),
+    .oneOf(["male", "female", "other"], "Please select a valid option")
+    .required("This field is required"),
 });
 
 export default function LookingFor() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLookingForSubmit = async (values: {
@@ -46,7 +46,7 @@ export default function LookingFor() {
   ) => {
     const isSelected = selectedOption === value;
     return (
-      <Pressable
+      <TouchableOpacity
         onPress={() => setFieldValue("lookingFor", isSelected ? "" : value)}
         style={[styles.option, isSelected && styles.optionSelected]}
       >
@@ -55,7 +55,7 @@ export default function LookingFor() {
         >
           {label}
         </RnText>
-      </Pressable>
+      </TouchableOpacity>
     );
   };
 
@@ -63,7 +63,7 @@ export default function LookingFor() {
     <ScrollContainer topBar={<RnProgressBar progress={7 / 11} />}>
       <Formik
         initialValues={{ lookingFor: "" }}
-        validationSchema={LookingForSchema}
+        validationSchema={lookingForSchema}
         onSubmit={handleLookingForSubmit}
       >
         {({ values, setFieldValue, handleSubmit, errors }) => (
@@ -74,30 +74,14 @@ export default function LookingFor() {
             </RnText>
 
             <View style={styles.optionsContainer}>
+              {renderOption("male", "Male", values.lookingFor, setFieldValue)}
               {renderOption(
-                "relationship",
-                "A relationship",
+                "female",
+                "Female",
                 values.lookingFor,
                 setFieldValue
               )}
-              {renderOption(
-                "casual",
-                "Something casual",
-                values.lookingFor,
-                setFieldValue
-              )}
-              {renderOption(
-                "notSure",
-                "I'm not sure yet",
-                values.lookingFor,
-                setFieldValue
-              )}
-              {renderOption(
-                "marriage",
-                "Marriage",
-                values.lookingFor,
-                setFieldValue
-              )}
+              {renderOption("other", "Other", values.lookingFor, setFieldValue)}
             </View>
 
             {errors.lookingFor && (
