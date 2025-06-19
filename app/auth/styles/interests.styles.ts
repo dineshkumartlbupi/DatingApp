@@ -27,31 +27,69 @@ export default (theme: 'light' | 'dark') => StyleSheet.create({
     textAlign: "center",
     marginBottom: hp(3),
   },
-  button: {
-    marginTop: hp(2),
-  },
-  optionsContainer: {
+  searchContainer: {
     width: wp(80),
     alignSelf: "center",
-  },
-  option: {
+    marginBottom: hp(3),
+    borderWidth: 1,
+      borderRadius: Borders.radius1,
     flexDirection: "row",
     alignItems: "center",
-    padding: hp(2),
-    marginBottom: hp(2),
-      borderRadius: Borders.radius1,
-    backgroundColor: "#F5F5F5",
+    paddingHorizontal: wp(4),
+    paddingVertical: hp(1),
   },
-  optionSelected: {
+  searchInput: {
+    flex: 1,
+    fontSize: FontSize.small,
+    fontFamily: FontFamily.regular,
+    color: Colors[theme].blackText,
+  },
+  searchIcon: {
+    width: wp(5),
+    height: wp(5),
+    tintColor: Colors[theme].blackText,
+  },
+  interestsContainer: {
+    width: wp(80),
+    alignSelf: "center",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
+  },
+  interestTag: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: wp(4),
+    paddingVertical: hp(1),
+      borderRadius: Borders.radius1,
+    marginRight: wp(2),
+    marginBottom: hp(2),
+  },
+  selectedTag: {
     backgroundColor: Colors[theme].primary,
   },
-  optionText: {
-    fontSize: FontSize.small,
-    fontFamily: FontFamily.medium,
-    marginLeft: wp(4),
+  unselectedTag: {
+    backgroundColor: Colors[theme].background,
+    borderWidth: 1,
   },
-  optionTextSelected: {
+  tagText: {
+    fontSize: FontSize.extraSmall,
+    fontFamily: FontFamily.medium,
+    marginLeft: wp(2),
+  },
+  selectedTagText: {
     color: Colors[theme].whiteText,
+  },
+  unselectedTagText: {
+    color: Colors[theme].blackText,
+  },
+  tagIcon: {
+    width: wp(4),
+    height: wp(4),
+    tintColor: Colors[theme].blackText,
+  },
+  button: {
+    marginTop: hp(2),
   },
   errorText: {
     color: Colors[theme].redText,

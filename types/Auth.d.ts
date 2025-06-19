@@ -25,3 +25,7 @@ export type GenderValues = {
 export type LookingForValues = {
   lookingFor: "relationship" | "casual" | "notSure" | "marriage";
 }
+
+export type InterestsValues = {
+  interests: string[];
+}

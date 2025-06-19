@@ -68,6 +68,12 @@ export default function AuthLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="interests"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }

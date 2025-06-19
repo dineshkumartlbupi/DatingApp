@@ -13,7 +13,13 @@ import { View } from "react-native";
 import * as Yup from "yup";
 
 const emailSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
+  email: Yup.string()
+    .required("Email is required")
+    .test("email-format", "Please enter a valid email address", (value) => {
+      if (!value) return false;
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return emailRegex.test(value);
+    }),
 });
 
 export default function Email() {
