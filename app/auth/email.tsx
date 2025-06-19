@@ -21,6 +21,7 @@ export default function Email() {
   const handleEmailSubmit = async (values: EmailValues) => {
     setIsLoading(true);
     try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       router.push("/auth/age");
     } catch (error) {
       console.error(error);

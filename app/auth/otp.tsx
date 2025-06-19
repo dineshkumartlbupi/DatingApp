@@ -24,6 +24,7 @@ export default function OtpScreen() {
   const handleVerify = async (values: { otp: string }) => {
     setIsLoading(true);
     try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       router.replace("/auth/name");
     } catch (error) {
       console.error(error);

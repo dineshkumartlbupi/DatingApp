@@ -20,7 +20,15 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async (values: LoginValues) => {
-    console.log("🚀 ~ handleLogin ~ values:", values);
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log("🚀 ~ handleLogin ~ values:", values);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const phoneInput = useRef<PhoneInput>(null);
