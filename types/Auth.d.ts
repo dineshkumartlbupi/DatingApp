@@ -29,3 +29,19 @@ export type LookingForValues = {
 export type InterestsValues = {
   interests: string[];
 }
+
+export type PhotoValues = {
+  photo: {
+    uri: string;
+    path: string;
+    type: string;
+    name: string;
+  } | null;
+}
+
+export type LocationValues = {
+  location: {
+    latitude: number;
+    longitude: number;
+  } | null;
+}

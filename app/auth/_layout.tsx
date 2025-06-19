@@ -74,6 +74,18 @@ export default function AuthLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="photo"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="location"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }

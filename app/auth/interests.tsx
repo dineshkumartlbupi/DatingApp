@@ -45,7 +45,7 @@ export default function Interests() {
     setIsLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      router.push("/auth/questions");
+      router.push("/auth/photo");
     } catch (error) {
       console.error(error);
     } finally {

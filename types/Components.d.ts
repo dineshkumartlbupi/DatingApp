@@ -6,7 +6,7 @@ import {
   StatusBarStyle,
   StyleProp,
   TextStyle,
-  ViewStyle,
+  ViewStyle
 } from "react-native";
 import { ToastPosition } from "react-native-toast-message";
 
@@ -124,4 +124,30 @@ export interface RnWheelPickerProps {
   itemHeight?: number;
   highlightColor?: string;
   highlightBorderWidth?: number;
+}
+
+export interface RnImagePickerProps {
+  setUri: (obj: {
+    uri: string;
+    path: string;
+    type: string;
+    name: string;
+  }) => void;
+  visible: boolean;
+  showPicker(): void;
+  hidePicker(): void;
+  children: ReactElement;
+}
+
+export interface ListItemType {
+  title: string;
+  icon: string;
+  onPress(): void;
+}
+
+export interface RnAvatarProps {
+  avatarHeight?: number;
+  showAvatarIcon?: boolean;
+  source?: {uri: string} | null;
+  style?: StyleProp<ViewStyle>;
 }
