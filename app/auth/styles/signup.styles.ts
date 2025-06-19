@@ -9,17 +9,16 @@ export default StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: hp(2),
   },
-  image: {
-    width: wp(100),
-    height: hp(40),
+  progressContainer: {
+    marginTop: hp(2),
+    width: wp(80),
     alignSelf: "center",
-    marginTop: hp(9),
-    marginBottom: hp(9),
   },
   title: {
     fontSize: FontSize.extraLarge,
     fontWeight: "bold",
-    width: wp(80),
+    width: wp(60),
+    marginTop: hp(6),
     alignSelf: "center",
     textAlign: "center",
   },

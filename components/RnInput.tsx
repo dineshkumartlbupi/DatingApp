@@ -1,4 +1,5 @@
 import { Borders } from "@/constants/Borders";
+import { Colors } from "@/constants/Colors";
 import { FontSize } from "@/constants/FontSize";
 import { RnInputProps } from "@/types";
 import { hp, wp } from "@/utils";
@@ -54,9 +55,8 @@ const RnInput: React.FC<RnInputProps> = ({
 
 const styles = StyleSheet.create({
   errorText: {
-    color: "red",
+    color: Colors.light.redText,
     fontSize: FontSize.small,
-    marginTop: hp(1),
     marginBottom: hp(2),
     marginLeft: wp(1),
   },

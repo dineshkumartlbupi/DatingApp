@@ -31,7 +31,7 @@ export default function GetStarted() {
         </View>
         <View style={styles.footer}>
           <RnText>{`Don't have an account? `}</RnText>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => router.push("/auth/signup")}>
             <RnText style={styles.link}>Sign Up</RnText>
           </TouchableOpacity>
         </View>

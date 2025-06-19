@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/Colors";
+import { FontFamily } from "@/constants/FontFamily";
 import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
@@ -6,22 +7,18 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   innerContainer: {
     flex: 1,
-    justifyContent: "space-between",
     marginBottom: hp(2),
-  },
-  image: {
-    width: wp(100),
-    height: hp(40),
-    alignSelf: "center",
-    marginTop: hp(9),
-    marginBottom: hp(9),
   },
   title: {
     fontSize: FontSize.extraLarge,
-    fontWeight: "bold",
-    width: wp(80),
+    fontFamily: FontFamily.bold,
+    marginTop: hp(6),
     alignSelf: "center",
     textAlign: "center",
+  },
+  phoneNumber: {
+    fontFamily: FontFamily.bold,
+    fontSize: FontSize.large,
   },
   subtitle: {
     fontSize: FontSize.small,
@@ -30,16 +27,22 @@ export default StyleSheet.create({
     textAlign: "center",
     marginVertical: hp(2),
   },
-  button: {
-    marginTop: hp(2),
+  otp: {
+    alignSelf: "center",
+    width: wp(80),
+    marginVertical: hp(3),
   },
-  footer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginTop: hp(2),
+  resendText: {
+    textAlign: "center",
+    marginBottom: hp(1),
   },
+
   link: {
     color: Colors.light.greenText,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
+    alignSelf: "center",
+  },
+  verifyButton: {
+    marginTop: hp(2),
   },
 });
