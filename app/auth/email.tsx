@@ -19,7 +19,14 @@ export default function Email() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleEmailSubmit = async (values: EmailValues) => {
-    router.push("/auth/age");
+    setIsLoading(true);
+    try {
+      router.push("/auth/age");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

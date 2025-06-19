@@ -30,17 +30,23 @@ export default StyleSheet.create({
   otp: {
     alignSelf: "center",
     width: wp(80),
-    marginVertical: hp(3),
+    marginTop: hp(3),
   },
   resendText: {
     textAlign: "center",
-    marginBottom: hp(1),
+    marginVertical: hp(1),
   },
 
   link: {
     color: Colors.light.greenText,
     fontFamily: FontFamily.bold,
     alignSelf: "center",
+  },
+  errorText: {
+    color: Colors.light.redText,
+    fontSize: FontSize.small,
+    textAlign: "center",
+    marginBottom: hp(1),
   },
   verifyButton: {
     marginTop: hp(2),

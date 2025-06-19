@@ -19,7 +19,14 @@ export default function Name() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleNameSubmit = async (values: NameValues) => {
-    router.push("/auth/email");
+    setIsLoading(true);
+    try {
+      router.push("/auth/email");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

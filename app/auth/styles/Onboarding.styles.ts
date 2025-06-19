@@ -28,7 +28,7 @@ export default StyleSheet.create({
   },
   iconContainer: {
     backgroundColor: "white",
-    borderRadius: Borders.radius4,
+    borderRadius: Borders.circle,
     width: wp(10),
     height: wp(10),
     justifyContent: "center",

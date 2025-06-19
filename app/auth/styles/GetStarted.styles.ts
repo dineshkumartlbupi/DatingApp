@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/Colors";
+import { FontFamily } from "@/constants/FontFamily";
 import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
@@ -13,12 +14,12 @@ export default StyleSheet.create({
     width: wp(100),
     height: hp(40),
     alignSelf: "center",
-    marginTop: hp(9),
-    marginBottom: hp(9),
+    marginTop: hp(7),
+    marginBottom: hp(7),
   },
   title: {
     fontSize: FontSize.extraLarge,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
     width: wp(80),
     alignSelf: "center",
     textAlign: "center",
@@ -40,6 +41,6 @@ export default StyleSheet.create({
   },
   link: {
     color: Colors.light.greenText,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
   },
 });

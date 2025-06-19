@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/Colors";
+import { FontFamily } from "@/constants/FontFamily";
 import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
@@ -11,7 +12,7 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: FontSize.extraLarge,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
     width: wp(60),
     alignSelf: "center",
     marginTop: hp(20),
@@ -35,7 +36,7 @@ export default StyleSheet.create({
   orText: {
     marginHorizontal: wp(2),
     fontSize: FontSize.large,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
   },
   socialContainer: {
     flexDirection: "row",
@@ -48,6 +49,6 @@ export default StyleSheet.create({
   },
   link: {
     color: Colors.light.greenText,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
   },
 });

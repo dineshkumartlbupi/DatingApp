@@ -5,6 +5,7 @@ import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
 import RnWheelPicker from "@/components/RnWheelPicker";
 import { AgeValues } from "@/types/Auth";
+import { useRouter } from "expo-router";
 import { Formik } from "formik";
 import React, { useState } from "react";
 import { View } from "react-native";
@@ -25,15 +26,25 @@ const ageOptions = Array.from({ length: AGE_MAX - AGE_MIN + 1 }, (_, i) =>
 
 export default function Age() {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const handleAgeSubmit = async (values: AgeValues) => {
+    setIsLoading(true);
+    try {
+      router.push("/auth/gender");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <ScrollContainer topBar={<RnProgressBar progress={5 / 11} />}>
       <Formik
         initialValues={{ age: 25 }}
         validationSchema={ageSchema}
-        onSubmit={async (values: AgeValues) => {
-          console.log("Age submitted:", values.age);
-        }}
+        onSubmit={handleAgeSubmit}
         validateOnChange
         validateOnMount={false}
       >

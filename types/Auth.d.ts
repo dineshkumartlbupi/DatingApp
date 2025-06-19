@@ -17,3 +17,11 @@ export interface EmailValues {
 export interface AgeValues {
   age: number;
 }
+
+export type GenderValues = {
+  gender: "male" | "female" | "other";
+}
+
+export type LookingForValues = {
+  lookingFor: "relationship" | "casual" | "notSure" | "marriage";
+}

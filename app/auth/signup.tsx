@@ -21,10 +21,18 @@ export default function Signup() {
   const phoneInput = useRef<PhoneInput>(null);
 
   const handleSignup = async (values: SignupValues) => {
-    router.push({
-      pathname: "/auth/otp",
-      params: { phone: values.phone },
-    });
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      router.push({
+        pathname: "/auth/otp",
+        params: { phone: values.phone },
+      });
+    } catch (error) {
+      console.error("Signup error:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -64,6 +72,7 @@ export default function Signup() {
               <TouchableOpacity
                 onPress={() => {
                   resetForm();
+                  router.push("/auth/login");
                 }}
                 disabled={isLoading}
               >

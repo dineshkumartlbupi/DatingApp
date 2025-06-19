@@ -104,6 +104,7 @@ export interface RnOtpProps {
   value: string;
   cell?: number;
   style?: ViewStyle;
+  error?: string;
 }
 
 export interface RnProgressBarProps {

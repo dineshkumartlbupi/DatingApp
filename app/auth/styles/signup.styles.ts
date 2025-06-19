@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/Colors";
+import { FontFamily } from "@/constants/FontFamily";
 import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
@@ -16,7 +17,7 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: FontSize.extraLarge,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
     width: wp(60),
     marginTop: hp(6),
     alignSelf: "center",
@@ -39,6 +40,6 @@ export default StyleSheet.create({
   },
   link: {
     color: Colors.light.greenText,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
   },
 });

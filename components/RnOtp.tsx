@@ -13,7 +13,14 @@ import {
 } from "react-native-confirmation-code-field";
 import RnText from "./RnText";
 
-const RnOtp = ({ verifyCode, isError, cell, style, value }: RnOtpProps) => {
+const RnOtp = ({
+  verifyCode,
+  isError,
+  cell,
+  style,
+  value,
+  error,
+}: RnOtpProps) => {
   const ref = useBlurOnFulfill({ value, cellCount: cell ?? 4 });
 
   const styles = StyleSheet.create({
@@ -30,12 +37,17 @@ const RnOtp = ({ verifyCode, isError, cell, style, value }: RnOtpProps) => {
       borderColor: isError ? Colors.light.redText : Colors.light.blackText,
       textAlign: "center",
       textAlignVertical: "center",
-      borderRadius: Borders.radius4,
+      borderRadius: Borders.circle,
     },
     focusCell: {
       borderColor: isError ? Colors.light.redText : Colors.light.primary,
       borderWidth: 2,
-      lineHeight: hp(6),
+    },
+    errorText: {
+      color: Colors.light.redText,
+      fontSize: FontSize.small,
+      textAlign: "center",
+      marginTop: hp(1),
     },
   });
 
@@ -62,6 +74,7 @@ const RnOtp = ({ verifyCode, isError, cell, style, value }: RnOtpProps) => {
           </Fragment>
         )}
       />
+      {isError && <RnText style={styles.errorText}>{error}</RnText>}
     </View>
   );
 };
