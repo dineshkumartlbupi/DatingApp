@@ -12,7 +12,7 @@ import { GenderValues } from "@/types";
 import { router } from "expo-router";
 import { Formik } from "formik";
 import { useState } from "react";
-import { TouchableOpacity, View } from "react-native";
+import { Pressable, View } from "react-native";
 import * as Yup from "yup";
 
 // Validation schema
@@ -52,7 +52,7 @@ export default function Gender() {
   ) => {
     const isSelected = selectedGender === gender;
     return (
-      <TouchableOpacity
+      <Pressable
         onPress={() => setFieldValue("gender", isSelected ? "" : gender)}
         style={[styles.genderButton, isSelected && styles.selectedGenderButton]}
       >
@@ -68,7 +68,7 @@ export default function Gender() {
         >
           {label}
         </RnText>
-      </TouchableOpacity>
+      </Pressable>
     );
   };
 

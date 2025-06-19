@@ -21,7 +21,7 @@ const ScrollContainer: React.FC<RnContainerProps> = ({
       backgroundColor: Colors[theme].background,
     },
     innerContainer: {
-      flexGrow: 1,
+      flex: 1,
       paddingHorizontal: wp(4),
     },
   });
@@ -31,7 +31,8 @@ const ScrollContainer: React.FC<RnContainerProps> = ({
       {topBar && topBar}
       <KeyboardAwareScrollView
         contentContainerStyle={[styles.innerContainer, customStyle]}
-        keyboardShouldPersistTaps="always"
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
       >
         {children}
       </KeyboardAwareScrollView>

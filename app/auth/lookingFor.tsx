@@ -8,13 +8,16 @@ import { LookingForValues } from "@/types";
 import { router } from "expo-router";
 import { Formik } from "formik";
 import { useState } from "react";
-import { TouchableOpacity, View } from "react-native";
+import { Pressable, View } from "react-native";
 import * as Yup from "yup";
 
 const lookingForSchema = Yup.object().shape({
   lookingFor: Yup.string()
-    .oneOf(["male", "female", "other"], "Please select a valid option")
-    .required("This field is required"),
+    .oneOf(
+      ["relationship", "casual", "notSure", "marriage"],
+      "Please select a valid option"
+    )
+    .required("Please select an option"),
 });
 
 export default function LookingFor() {
@@ -46,7 +49,7 @@ export default function LookingFor() {
   ) => {
     const isSelected = selectedOption === value;
     return (
-      <TouchableOpacity
+      <Pressable
         onPress={() => setFieldValue("lookingFor", isSelected ? "" : value)}
         style={[styles.option, isSelected && styles.optionSelected]}
       >
@@ -55,7 +58,7 @@ export default function LookingFor() {
         >
           {label}
         </RnText>
-      </TouchableOpacity>
+      </Pressable>
     );
   };
 
@@ -74,14 +77,30 @@ export default function LookingFor() {
             </RnText>
 
             <View style={styles.optionsContainer}>
-              {renderOption("male", "Male", values.lookingFor, setFieldValue)}
               {renderOption(
-                "female",
-                "Female",
+                "relationship",
+                "A relationship",
                 values.lookingFor,
                 setFieldValue
               )}
-              {renderOption("other", "Other", values.lookingFor, setFieldValue)}
+              {renderOption(
+                "casual",
+                "Something casual",
+                values.lookingFor,
+                setFieldValue
+              )}
+              {renderOption(
+                "notSure",
+                "I'm not sure yet",
+                values.lookingFor,
+                setFieldValue
+              )}
+              {renderOption(
+                "marriage",
+                "Marriage",
+                values.lookingFor,
+                setFieldValue
+              )}
             </View>
 
             {errors.lookingFor && (
