@@ -1,9 +1,10 @@
 import { Colors } from "@/constants/Colors";
+import { FontFamily } from "@/constants/FontFamily";
 import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+export default (theme: 'light' | 'dark') => StyleSheet.create({
   innerContainer: {
     flex: 1,
     justifyContent: "space-between",
@@ -11,7 +12,7 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: FontSize.extraLarge,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
     width: wp(60),
     alignSelf: "center",
     marginTop: hp(20),
@@ -35,7 +36,7 @@ export default StyleSheet.create({
   orText: {
     marginHorizontal: wp(2),
     fontSize: FontSize.large,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
   },
   socialContainer: {
     flexDirection: "row",
@@ -47,7 +48,7 @@ export default StyleSheet.create({
     marginTop: hp(2),
   },
   link: {
-    color: Colors.light.greenText,
-    fontWeight: "bold",
+    color: Colors[theme].greenText,
+    fontFamily: FontFamily.bold,
   },
 });

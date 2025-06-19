@@ -1,10 +1,10 @@
-import { Colors } from '@/constants/Colors';
-import { FontSize } from '@/constants/FontSize';
-import { hp, wp } from '@/utils';
-import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import RnText from './RnText';
+import { Colors } from "@/constants/Colors";
+import { FontSize } from "@/constants/FontSize";
+import { hp, wp } from "@/utils";
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import RnText from "./RnText";
 
 interface InterestTagProps {
   title: string;
@@ -41,8 +41,8 @@ const InterestTag: React.FC<InterestTagProps> = ({
 
 const styles = StyleSheet.create({
   tag: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: wp(3),
     paddingVertical: hp(1),
     borderRadius: wp(5),
@@ -60,11 +60,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: FontSize.regular,
     color: Colors.light.redText,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   selectedText: {
     color: Colors.light.background,
   },
 });
-
 export default InterestTag;

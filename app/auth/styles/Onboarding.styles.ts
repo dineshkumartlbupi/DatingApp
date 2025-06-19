@@ -5,7 +5,7 @@ import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+export default (theme: 'light' | 'dark') => StyleSheet.create({
   backgroundImage: {
     width: wp(100),
     height: hp(100),
@@ -28,7 +28,7 @@ export default StyleSheet.create({
   },
   iconContainer: {
     backgroundColor: "white",
-    borderRadius: Borders.radius4,
+    borderRadius: Borders.circle,
     width: wp(10),
     height: wp(10),
     justifyContent: "center",
@@ -36,7 +36,7 @@ export default StyleSheet.create({
   },
   socialwhiteText: {
     fontSize: FontSize.medium,
-    color: Colors.light.blackText,
+    color: Colors[theme].blackText,
     fontFamily: FontFamily.bold,
     marginLeft: wp(3),
   },
@@ -45,7 +45,7 @@ export default StyleSheet.create({
     marginTop: hp(1),
   },
   emailwhiteText: {
-    color: Colors.light.whiteText,
+    color: Colors[theme].whiteText,
     fontSize: FontSize.small,
     fontFamily: FontFamily.bold,
   },
@@ -54,10 +54,10 @@ export default StyleSheet.create({
     marginTop: hp(3),
   },
   footerText: {
-    color: Colors.light.whiteText,
+    color: Colors[theme].whiteText,
   },
   footerLink: {
-    color: Colors.light.redText,
+    color: Colors[theme].redText,
     fontFamily: FontFamily.bold,
     textDecorationLine: "underline",
   },
