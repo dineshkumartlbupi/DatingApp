@@ -45,3 +45,11 @@ export type LocationValues = {
     longitude: number;
   } | null;
 }
+
+export type ProfessionValues = {
+  profession: "it" | "healthcare" | "engineer" | "business" | "teacher" | "artist" | "";
+}
+
+export type ReligionValues = {
+  religion: "hinduism" | "islam" | "christianity" | "judaism" | "";
+}

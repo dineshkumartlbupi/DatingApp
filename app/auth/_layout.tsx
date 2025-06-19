@@ -86,6 +86,18 @@ export default function AuthLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="profession"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="religion"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }

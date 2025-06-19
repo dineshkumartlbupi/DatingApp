@@ -27,7 +27,7 @@ export default function LocationScreen() {
     setIsLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      router.push("/(tabs)");
+      // router.push("/(tabs)");
     } catch (error) {
       console.error(error);
     } finally {
@@ -38,6 +38,7 @@ export default function LocationScreen() {
   const handleLocationAccess = async (
     setFieldValue: (field: string, value: any) => void
   ) => {
+    setIsLoading(true);
     try {
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
@@ -50,9 +51,12 @@ export default function LocationScreen() {
         latitude: location.coords.latitude,
         longitude: location.coords.longitude,
       });
+      router.push("/auth/profession");
     } catch (error) {
       console.error(error);
       alert("Error getting location");
+    } finally {
+      setIsLoading(false);
     }
   };
 
