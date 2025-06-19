@@ -1,4 +1,5 @@
-import { fontsSize } from "@/constants/FontsSize";
+import { Colors } from "@/constants/Colors";
+import { FontSize } from "@/constants/FontSize";
 import { RnHeaderProps } from "@/types";
 import { wp } from "@/utils";
 import { Header } from "@rneui/base";
@@ -9,6 +10,7 @@ import RnText from "./RnText";
 const RnHeader: React.FC<RnHeaderProps> = ({
   statusbar,
   barStyle,
+  centerComponent,
   leftComponent,
   rightComponent,
   centerText,
@@ -24,7 +26,11 @@ const RnHeader: React.FC<RnHeaderProps> = ({
       barStyle={barStyle ?? "light-content"}
       leftComponent={leftComponent}
       centerComponent={
-        <RnText style={styles.centerTextStyle}>{centerText}</RnText>
+        centerText ? (
+          <RnText style={styles.centerTextStyle}>{centerText}</RnText>
+        ) : (
+          centerComponent
+        )
       }
       rightComponent={rightComponent}
       backgroundColor={backgroundColor ?? styles.statusbar.backgroundColor}
@@ -38,15 +44,15 @@ const RnHeader: React.FC<RnHeaderProps> = ({
 
 const styles = StyleSheet.create({
   statusbar: {
-    backgroundColor: "#6432ff",
+    backgroundColor: Colors.light.background,
   },
   sideContainerStyle: {
     marginHorizontal: wp(4),
     justifyContent: "center",
   },
   centerTextStyle: {
-    color: "white",
-    fontSize: fontsSize.large,
+    color: Colors.light.blackText,
+    fontSize: FontSize.large,
   },
 });
 

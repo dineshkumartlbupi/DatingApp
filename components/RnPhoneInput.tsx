@@ -1,4 +1,4 @@
-import { borders } from "@/constants/Borders";
+import { Borders } from "@/constants/Borders";
 import { RnPhoneInputProps } from "@/types";
 import { hp, wp } from "@/utils";
 import React, { forwardRef } from "react";
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1.5,
     borderWidth: 1.5,
     borderColor: "#ddd",
-    borderRadius: borders.radius1,
+    borderRadius: Borders.radius1,
     height: hp(6.5),
     width: wp(92),
   },
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     width: wp(20),
   },
   textInput: {
-    borderRadius: borders.radius1,
+    borderRadius: Borders.radius1,
     paddingVertical: 0,
   },
   errorText: {

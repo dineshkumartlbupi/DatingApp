@@ -1,5 +1,6 @@
 import { Colors } from "@/constants/Colors";
-import { fontsSize } from "@/constants/FontsSize";
+import { FontFamily } from "@/constants/FontFamily";
+import { FontSize } from "@/constants/FontSize";
 import { RnTextProps } from "@/types";
 import React from "react";
 import { StyleSheet, Text } from "react-native";
@@ -26,8 +27,9 @@ const RnText: React.FC<RnTextProps> = ({
 
 const styles = StyleSheet.create({
   textStyle: {
-    color: Colors.light.primaryText,
-    fontSize: fontsSize.regular,
+    color: Colors.light.blackText,
+    fontSize: FontSize.regular,
+    fontFamily: FontFamily.regular,
   },
 });
 

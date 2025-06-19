@@ -9,37 +9,29 @@ export default StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: hp(2),
   },
+  image: {
+    width: wp(100),
+    height: hp(40),
+    alignSelf: "center",
+    marginTop: hp(9),
+    marginBottom: hp(9),
+  },
   title: {
     fontSize: FontSize.extraLarge,
     fontWeight: "bold",
-    width: wp(60),
+    width: wp(80),
     alignSelf: "center",
-    marginTop: hp(20),
-    marginBottom: hp(3),
     textAlign: "center",
+  },
+  subtitle: {
+    fontSize: FontSize.small,
+    width: wp(70),
+    alignSelf: "center",
+    textAlign: "center",
+    marginVertical: hp(2),
   },
   button: {
     marginTop: hp(2),
-  },
-  orContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: hp(2),
-  },
-  orLine: {
-    flex: 1,
-    height: 1,
-    backgroundColor: "#ddd",
-  },
-  orText: {
-    marginHorizontal: wp(2),
-    fontSize: FontSize.large,
-    fontWeight: "bold",
-  },
-  socialContainer: {
-    flexDirection: "row",
-    alignSelf: "center",
   },
   footer: {
     flexDirection: "row",

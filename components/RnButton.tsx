@@ -1,6 +1,7 @@
-import { borders } from "@/constants/Borders";
+import { Borders } from "@/constants/Borders";
 import { Colors } from "@/constants/Colors";
-import { fontsSize } from "@/constants/FontsSize";
+import { FontFamily } from "@/constants/FontFamily";
+import { FontSize } from "@/constants/FontSize";
 import { RnButtonProps } from "@/types";
 import { hp, wp } from "@/utils";
 import { FontAwesome6 } from "@expo/vector-icons";
@@ -42,15 +43,16 @@ const RnButton: React.FC<RnButtonProps> = ({
             <View style={styles.rowView}>
               {icon ? (
                 <>
-                  <FontAwesome6
-                    name={icon}
-                    color={styles.icon.color}
-                    size={styles.icon.fontSize}
-                    style={{ marginRight: styles.icon.marginRight }}
-                  />
+                  <View style={styles.leftIconContainer}>
+                    <FontAwesome6
+                      name={icon}
+                      color={styles.icon.color}
+                      size={styles.icon.fontSize}
+                    />
+                  </View>
                   <Text
                     style={[
-                      styles.buttonText,
+                      styles.whiteText,
                       style[1],
                       icon && styles.iconText,
                     ]}
@@ -68,7 +70,7 @@ const RnButton: React.FC<RnButtonProps> = ({
                   )}
                 </>
               ) : (
-                <Text style={[styles.buttonText, style[1]]}>{title}</Text>
+                <Text style={[styles.whiteText, style[1]]}>{title}</Text>
               )}
             </View>
             {children && children}
@@ -86,15 +88,16 @@ const RnButton: React.FC<RnButtonProps> = ({
             <View style={styles.rowView}>
               {icon ? (
                 <>
-                  <FontAwesome6
-                    name={icon}
-                    color={styles.icon.color}
-                    size={styles.icon.fontSize}
-                    style={{ marginRight: styles.icon.marginRight }}
-                  />
+                  <View style={styles.leftIconContainer}>
+                    <FontAwesome6
+                      name={icon}
+                      color={styles.icon.color}
+                      size={styles.icon.fontSize}
+                    />
+                  </View>
                   <Text
                     style={[
-                      styles.buttonText,
+                      styles.whiteText,
                       style[1],
                       icon && styles.iconText,
                     ]}
@@ -112,7 +115,7 @@ const RnButton: React.FC<RnButtonProps> = ({
                   )}
                 </>
               ) : (
-                <Text style={[styles.buttonText, style[1]]}>{title}</Text>
+                <Text style={[styles.whiteText, style[1]]}>{title}</Text>
               )}
             </View>
             {children && children}
@@ -139,7 +142,7 @@ const styles = StyleSheet.create({
     height: hp(6.5),
     width: wp(92),
     backgroundColor: Colors.light.button,
-    borderRadius: borders.radius4,
+    borderRadius: Borders.radius4,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
@@ -156,20 +159,29 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     paddingHorizontal: wp(4),
   },
+  leftIconContainer: {
+    backgroundColor: Colors.light.background,
+    width: wp(10),
+    height: wp(10),
+    borderRadius: Borders.radius4,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   disabledButton: {
     backgroundColor: "gray",
   },
-  buttonText: {
-    color: "white",
-    fontSize: fontsSize.regular,
+  whiteText: {
+    color: Colors.light.whiteText,
+    fontSize: FontSize.medium,
+    fontFamily: FontFamily.semiBold,
   },
   iconText: {
     flex: 1,
+    textAlign: "center",
   },
   icon: {
-    fontSize: fontsSize.medium,
-    color: "white",
-    marginRight: wp(4),
+    fontSize: FontSize.medium,
+    color: Colors.light.button,
     marginLeft: wp(4),
   },
   rowView: {
