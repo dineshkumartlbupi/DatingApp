@@ -1,12 +1,15 @@
-import styles from '@/app/(tabs)/styles/home.styles';
-import QuestionCard from '@/components/QuestionCard';
-import ScrollContainer from '@/components/RnScrollContainer';
-import RnText from '@/components/RnText';
-import StoryCircle from '@/components/StoryCircle';
-import { Colors } from '@/constants/Colors';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import React, { useState } from 'react';
-import { FlatList, TouchableOpacity, View } from 'react-native';
+import styles from "@/app/(tabs)/styles/home.styles";
+import QuestionCard from "@/components/QuestionCard";
+import ScrollContainer from "@/components/RnScrollContainer";
+import RnText from "@/components/RnText";
+import StoryCircle from "@/components/StoryCircle";
+import { Colors } from "@/constants/Colors";
+import { setToken } from "@/redux/slices/userSlice";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { router } from "expo-router";
+import React, { useState } from "react";
+import { FlatList, TouchableOpacity, View } from "react-native";
+import { useDispatch } from "react-redux";
 
 type Story = {
   id: string;
@@ -29,80 +32,95 @@ type Question = {
 
 const stories: Story[] = [
   {
-    id: '1',
-    username: 'My Story',
-    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150',
+    id: "1",
+    username: "My Story",
+    image:
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150",
     isOwn: true,
   },
   {
-    id: '2',
-    username: 'Selena',
-    image: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150',
+    id: "2",
+    username: "Selena",
+    image:
+      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150",
     isOwn: false,
   },
   {
-    id: '3',
-    username: 'Clara',
-    image: 'https://images.pexels.com/photos/1499327/pexels-photo-1499327.jpeg?auto=compress&cs=tinysrgb&w=150',
+    id: "3",
+    username: "Clara",
+    image:
+      "https://images.pexels.com/photos/1499327/pexels-photo-1499327.jpeg?auto=compress&cs=tinysrgb&w=150",
     isOwn: false,
   },
   {
-    id: '4',
-    username: 'Fabian',
-    image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150',
+    id: "4",
+    username: "Fabian",
+    image:
+      "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150",
     isOwn: false,
   },
   {
-    id: '5',
-    username: 'George',
-    image: 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150',
+    id: "5",
+    username: "George",
+    image:
+      "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150",
     isOwn: false,
   },
 ];
 
 const questions: Question[] = [
   {
-    id: '1',
-    category: 'Travel',
-    question: 'If you could live anywhere in the world, where would you pick?',
+    id: "1",
+    category: "Travel",
+    question: "If you could live anywhere in the world, where would you pick?",
     user: {
-      name: 'Miranda Kehlani',
-      location: 'STUTTGART',
-      avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100',
+      name: "Miranda Kehlani",
+      location: "STUTTGART",
+      avatar:
+        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100",
     },
-    backgroundImage: 'https://images.pexels.com/photos/1433052/pexels-photo-1433052.jpeg?auto=compress&cs=tinysrgb&w=400',
+    backgroundImage:
+      "https://images.pexels.com/photos/1433052/pexels-photo-1433052.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
-    id: '2',
-    category: 'Football',
-    question: 'What\'s your favorite football team and why?',
+    id: "2",
+    category: "Football",
+    question: "What's your favorite football team and why?",
     user: {
-      name: 'Alex Johnson',
-      location: 'MUNICH',
-      avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100',
+      name: "Alex Johnson",
+      location: "MUNICH",
+      avatar:
+        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100",
     },
-    backgroundImage: 'https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=400',
+    backgroundImage:
+      "https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
-    id: '3',
-    category: 'Food',
-    question: 'What\'s the most adventurous dish you\'ve ever tried?',
+    id: "3",
+    category: "Food",
+    question: "What's the most adventurous dish you've ever tried?",
     user: {
-      name: 'Sofia Martinez',
-      location: 'BARCELONA',
-      avatar: 'https://images.pexels.com/photos/1499327/pexels-photo-1499327.jpeg?auto=compress&cs=tinysrgb&w=100',
+      name: "Sofia Martinez",
+      location: "BARCELONA",
+      avatar:
+        "https://images.pexels.com/photos/1499327/pexels-photo-1499327.jpeg?auto=compress&cs=tinysrgb&w=100",
     },
-    backgroundImage: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400',
+    backgroundImage:
+      "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
 ];
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<'Make Friends' | 'Search Partners'>('Make Friends');
+  const [activeTab, setActiveTab] = useState<
+    "Make Friends" | "Search Partners"
+  >("Make Friends");
   const [hasNotification] = useState(true);
+
+  const dispatch = useDispatch();
 
   const handleStoryPress = (story: Story) => {
     if (story.isOwn) {
-      console.log('Add your own story');
+      console.log("Add your own story");
     } else {
       console.log(`Open story of ${story.username}`);
     }
@@ -115,9 +133,22 @@ export default function Home() {
   return (
     <ScrollContainer>
       <View style={styles.titleContainer}>
-        <RnText style={styles.titleText}>XYZ</RnText>
+        <RnText
+          style={styles.titleText}
+          onPress={() => {
+            router.dismissAll();
+            router.replace("/auth/onboarding");
+            dispatch(setToken(false));
+          }}
+        >
+          XYZ
+        </RnText>
         <TouchableOpacity style={styles.notificationContainer}>
-        <MaterialIcons name="notifications-none" size={24} color={Colors.dark.greenText} />
+          <MaterialIcons
+            name="notifications-none"
+            size={24}
+            color={Colors.dark.greenText}
+          />
           {hasNotification && <View style={styles.notificationDot} />}
         </TouchableOpacity>
       </View>
@@ -142,19 +173,32 @@ export default function Home() {
 
       <View style={styles.tabContainer}>
         <TouchableOpacity
-          style={[styles.tab, activeTab === 'Make Friends' && styles.activeTab]}
-          onPress={() => setActiveTab('Make Friends')}
+          style={[styles.tab, activeTab === "Make Friends" && styles.activeTab]}
+          onPress={() => setActiveTab("Make Friends")}
         >
-          <RnText style={[styles.tabText, activeTab === 'Make Friends' && styles.activeTabText]}>
+          <RnText
+            style={[
+              styles.tabText,
+              activeTab === "Make Friends" && styles.activeTabText,
+            ]}
+          >
             Make Friends
           </RnText>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.tab, activeTab === 'Search Partners' && styles.activeTab]}
-          onPress={() => setActiveTab('Search Partners')}
+          style={[
+            styles.tab,
+            activeTab === "Search Partners" && styles.activeTab,
+          ]}
+          onPress={() => setActiveTab("Search Partners")}
         >
-          <RnText style={[styles.tabText, activeTab === 'Search Partners' && styles.activeTabText]}>
+          <RnText
+            style={[
+              styles.tabText,
+              activeTab === "Search Partners" && styles.activeTabText,
+            ]}
+          >
             Search Partners
           </RnText>
         </TouchableOpacity>
@@ -169,9 +213,9 @@ export default function Home() {
             question={question.question}
             user={question.user}
             backgroundImage={question.backgroundImage}
-            onLike={() => handleCardAction('like', question.id)}
-            onComment={() => handleCardAction('comment', question.id)}
-            onMore={() => handleCardAction('more', question.id)}
+            onLike={() => handleCardAction("like", question.id)}
+            onComment={() => handleCardAction("comment", question.id)}
+            onMore={() => handleCardAction("more", question.id)}
           />
         ))}
       </View>

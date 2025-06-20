@@ -17,11 +17,11 @@ const ScrollContainer: React.FC<RnContainerProps> = ({
 
   const styles = StyleSheet.create({
     mainContainer: {
-      flexGrow: 1,
+      flex: 1,
       backgroundColor: Colors[theme].background,
     },
     innerContainer: {
-      flex: 1,
+      flexGrow: 1,
       paddingHorizontal: wp(4),
     },
   });
