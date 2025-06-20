@@ -97,7 +97,7 @@ export default function Matches() {
           <View style={[styles.statCircle, { backgroundColor: Colors.light.redText }]}>
             <Ionicons name="heart" size={20} color={Colors.light.background} />
           </View>
-          <View style={styles.statTextContainer}>
+          <View style={styles.statTextContainers}>
               <RnText style={styles.statLabel}>Likes</RnText>
           <RnText style={styles.statNumber}>{likedCount}</RnText>
        
@@ -202,7 +202,7 @@ const styles =  StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: wp(2),
       },
-      statTextContainer:{
+      statTextContainers:{
         flexDirection:'row',
         gap:wp(2)
       }
