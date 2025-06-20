@@ -1,36 +1,281 @@
 import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "@/hooks/useColorScheme";
-import { FontAwesome6 } from "@expo/vector-icons";
+import { hp, wp } from "@/utils";
+import {
+  FontAwesome5,
+  Ionicons,
+  MaterialCommunityIcons,
+  Octicons,
+} from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import React from "react";
-import { Platform } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
+
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        
         headerShown: false,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: "absolute",
-          },
-          default: {},
-        }),
+        tabBarStyle: {
+          backgroundColor: Colors.light.background,
+          height: hp(8),
+          marginHorizontal: wp(4),
+          marginBottom: hp(3),
+          borderRadius: wp(12),
+          position: "absolute",
+          alignItems: "center", // Align content inside tabBar
+          justifyContent: "center", // Center vertically
+        },
+
+        tabBarActiveTintColor: Colors.light.whiteText,
+        tabBarInactiveTintColor: "#FFB3BA",
+        tabBarShowLabel: false,
+        tabBarIconStyle: {
+          marginTop: hp(1.5),
+        },
       }}
     >
       <Tabs.Screen
         name="home"
         options={{
           title: "Home",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome6 size={28} name="house" color={color} />
+    tabBarButton: (props) => {
+      // Omit the 'ref' property to avoid type incompatibility
+      const { ref, ...rest } = props;
+      return (
+        <Pressable
+          {...rest}
+          android_ripple={null} // disables ripple on Android
+          style={props.style}
+        >
+          {props.children}
+        </Pressable>
+      );
+    },
+          tabBarIcon: ({ focused, size }) => (
+            <View
+              style={[
+                styles.iconContainer,
+                {
+                  backgroundColor: focused
+                    ? Colors.light.primary
+                    : "transparent",
+                },
+              ]}
+            >
+              <Octicons
+                name="home"
+                size={focused ? 24 : 28}
+                color={
+                  focused ? Colors.light.whiteText : "rgba(255, 88, 98, 0.8)"
+                }
+              />
+            </View>
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="discover"
+        options={{
+          title: "Discover",
+           tabBarButton: (props) => {
+      // Omit the 'ref' property to avoid type incompatibility
+      const { ref, ...rest } = props;
+      return (
+        <Pressable
+          {...rest}
+          android_ripple={null} // disables ripple on Android
+          style={props.style}
+        >
+          {props.children}
+        </Pressable>
+      );
+    },
+          tabBarIcon: ({ focused, size }) => (
+            <View
+              style={[
+                styles.iconContainer,
+                {
+                  backgroundColor: focused
+                    ? Colors.light.primary
+                    : "transparent",
+                },
+              ]}
+            >
+              <FontAwesome5
+                name="compass"
+                size={focused ? 24 : 28}
+                color={
+                  focused ? Colors.light.whiteText : "rgba(255, 88, 98, 0.8)"
+                }
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+           tabBarButton: (props) => {
+      const { ref, ...rest } = props;
+      return (
+        <Pressable
+          {...rest}
+          android_ripple={null} // disables ripple on Android
+          style={props.style}
+        >
+          {props.children}
+        </Pressable>
+      );
+    },
+          tabBarIcon: ({ focused, size }) => (
+            <View
+              style={[
+                styles.iconContainer,
+                {
+                  backgroundColor: focused
+                    ? Colors.light.primary
+                    : "transparent",
+                },
+              ]}
+            >
+              <Ionicons
+                name="add"
+                size={focused ? 24 : 32}
+                color={
+                  focused ? Colors.light.whiteText : "rgba(255, 88, 98, 0.8)"
+                }
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="matches"
+        options={{
+          title: "Matches",
+         tabBarButton: (props) => {
+      const { ref, ...rest } = props;
+      return (
+        <Pressable
+          {...rest}
+          android_ripple={null} // disables ripple on Android
+          style={props.style}
+        >
+          {props.children}
+        </Pressable>
+      );
+    },
+          tabBarIcon: ({ focused, size }) => (
+            <View
+              style={[
+                styles.iconContainer,
+                {
+                  backgroundColor: focused
+                    ? Colors.light.primary
+                    : "transparent",
+                },
+              ]}
+            >
+              <FontAwesome5
+                name="user-friends"
+                size={focused ? 24 : 22}
+                color={
+                  focused ? Colors.light.whiteText : "rgba(255, 88, 98, 0.8)"
+                }
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="messages"
+        options={{
+          title: "Messages",
+       tabBarButton: (props) => {
+      const { ref, ...rest } = props;
+      return (
+        <Pressable
+          {...rest}
+          android_ripple={null} // disables ripple on Android
+          style={props.style}
+        >
+          {props.children}
+        </Pressable>
+      );
+    },
+          tabBarIcon: ({ focused, size }) => (
+            <View
+              style={[
+                styles.iconContainer,
+                {
+                  backgroundColor: focused
+                    ? Colors.light.primary
+                    : "transparent",
+                },
+              ]}
+            >
+              <Ionicons
+                name="chatbubble-sharp"
+                size={focused ? 24 : 22}
+                color={
+                  focused ? Colors.light.whiteText : "rgba(255, 88, 98, 0.8)"
+                }
+              />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="tickets"
+        options={{
+          title: "Tickets",
+          tabBarButton: (props) => {
+      const { ref, ...rest } = props;
+      return (
+        <Pressable
+          {...rest}
+          android_ripple={null} // disables ripple on Android
+          style={props.style}
+        >
+          {props.children}
+        </Pressable>
+      );
+    },
+          tabBarIcon: ({ focused, size }) => (
+            <View
+              style={[
+                styles.iconContainer,
+                {
+                  backgroundColor: focused
+                    ? Colors.light.primary
+                    : "transparent",
+                },
+              ]}
+            >
+              <MaterialCommunityIcons
+                name="ticket"
+                size={focused ? 24 : 22}
+                color={
+                  focused ? Colors.light.whiteText : "rgba(255, 88, 98, 0.8)"
+                }
+              />
+            </View>
           ),
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: wp(10), // reduced size
+    height: wp(10),
+    borderRadius: wp(5),
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

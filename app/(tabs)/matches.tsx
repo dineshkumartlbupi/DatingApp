@@ -1,15 +1,14 @@
 import MatchCard from '@/components/MatchCard';
+import PrimaryHeader from '@/components/PrimaryHeader';
 import ScrollContainer from '@/components/RnScrollContainer';
 import RnText from '@/components/RnText';
 import { Colors } from '@/constants/Colors';
+import { FontSize } from '@/constants/FontSize';
+import { hp, wp } from '@/utils';
 import { Ionicons } from '@expo/vector-icons';
-import React, { useState } from 'react';
-import { FlatList, View } from 'react-native';
-
-import styles from '@/app/(tabs)/styles/matches.styles';
-import PrimaryHeader from '@/components/PrimaryHeader';
-import { wp } from '@/utils';
 import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 type Match = {
   id: string;
@@ -157,4 +156,55 @@ export default function Matches() {
   );
 }
 
+const styles =  StyleSheet.create({
+   statsContainer: {
+        flexDirection: 'row',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        marginBottom: hp(3),
+        gap: wp(8),
+      },
+      statItem: {
+        alignItems: 'center',
+        
+      },
+      statCircle: {
+        width: wp(16),
+        height: wp(16),
+        borderRadius: wp(8),
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: hp(1),
+      },
+      statNumber: {
+        fontSize: FontSize.regular,
+        fontWeight: 'bold',
+        color: Colors.light.redText,
+      
+      },
+      statLabel: {
+        fontSize: FontSize.regular,
+        color: Colors.light.greenText,
+      },
+      section: {
+       alignItems:'center'
+      },
+      sectionTitle: {
+        fontSize: FontSize.large,
+        fontWeight: 'bold',
+        color: Colors.light.greenText,
+        marginBottom: hp(2),
+      },
+      matchesList: {
+        paddingBottom: hp(2),
+      },
+      row: {
+        justifyContent: 'center',
+        paddingHorizontal: wp(2),
+      },
+      statTextContainer:{
+        flexDirection:'row',
+        gap:wp(2)
+      }
+})
 
