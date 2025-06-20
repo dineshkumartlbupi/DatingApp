@@ -1,10 +1,6 @@
-import RnText from "@/components/RnText";
-import { View } from "react-native";
+import { Redirect } from "expo-router";
+import React from "react";
 
-export default function HomeScreen() {
-  return (
-    <View>
-      <RnText>Home</RnText>
-    </View>
-  );
+export default function Home() {
+  return <Redirect href="/(tabs)/home" />;
 }

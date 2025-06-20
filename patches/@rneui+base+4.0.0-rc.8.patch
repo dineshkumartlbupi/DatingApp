@@ -1,0 +1,14 @@
+diff --git a/node_modules/@rneui/base/dist/SocialIcon/SocialIcon.d.ts b/node_modules/@rneui/base/dist/SocialIcon/SocialIcon.d.ts
+index 48fe1b9..bc431d5 100644
+--- a/node_modules/@rneui/base/dist/SocialIcon/SocialIcon.d.ts
++++ b/node_modules/@rneui/base/dist/SocialIcon/SocialIcon.d.ts
+@@ -1,7 +1,7 @@
+ import React from 'react';
+-import { ViewStyle, StyleProp, TextStyle } from 'react-native';
++import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+ import { InlinePressableProps, RneFunctionComponent } from '../helpers';
+-export declare type SocialMediaType = 'facebook' | 'facebook-messenger' | 'whatsapp' | 'twitter' | 'google-plus-official' | 'google' | 'pinterest' | 'linkedin' | 'youtube' | 'vimeo' | 'tumblr' | 'instagram' | 'quora' | 'flickr' | 'foursquare' | 'wordpress' | 'stumbleupon' | 'github' | 'github-alt' | 'twitch' | 'medium' | 'soundcloud' | 'stack-overflow' | 'gitlab' | 'angellist' | 'codepen' | 'weibo' | 'vk' | 'microsoft' | 'reddit';
++export declare type SocialMediaType = 'facebook' | 'apple' | 'facebook-messenger' | 'whatsapp' | 'twitter' | 'google-plus-official' | 'google' | 'pinterest' | 'linkedin' | 'youtube' | 'vimeo' | 'tumblr' | 'instagram' | 'quora' | 'flickr' | 'foursquare' | 'wordpress' | 'stumbleupon' | 'github' | 'github-alt' | 'twitch' | 'medium' | 'soundcloud' | 'stack-overflow' | 'gitlab' | 'angellist' | 'codepen' | 'weibo' | 'vk' | 'microsoft' | 'reddit';
+ export interface SocialIconProps extends InlinePressableProps {
+     Component?: typeof React.Component;
+     type?: SocialMediaType;

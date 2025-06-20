@@ -4,6 +4,7 @@ import RnPhoneInput from "@/components/RnPhoneInput";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { setToken } from "@/redux/slices/userSlice";
 import { LoginValues } from "@/types";
 import { SocialIcon } from "@rneui/base";
 import { router } from "expo-router";
@@ -11,6 +12,7 @@ import { Formik } from "formik";
 import { useRef, useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import PhoneInput from "react-native-phone-number-input";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
 const loginSchema = Yup.object().shape({
@@ -22,12 +24,14 @@ export default function Login() {
   const theme = colorScheme === "dark" ? "dark" : "light";
   const styles = createStyles(theme);
   const [isLoading, setIsLoading] = useState(false);
-
+  const dispatch = useDispatch();
   const handleLogin = async (values: LoginValues) => {
     setIsLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log("🚀 ~ handleLogin ~ values:", values);
+      router.dismissAll();
+      router.push("/(tabs)/home");
+      dispatch(setToken(true));
     } catch (error) {
       console.error(error);
     } finally {
