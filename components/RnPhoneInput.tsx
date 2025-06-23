@@ -1,4 +1,7 @@
 import { Borders } from "@/constants/Borders";
+import { Colors } from "@/constants/Colors";
+import { FontSize } from "@/constants/FontSize";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { RnPhoneInputProps } from "@/types";
 import { hp, wp } from "@/utils";
 import React, { forwardRef } from "react";
@@ -8,6 +11,35 @@ import RnText from "./RnText";
 
 const RnPhoneInput = forwardRef<any, RnPhoneInputProps>(
   ({ value, onChangeText, error, errorStyle }, ref) => {
+    const colorScheme = useColorScheme();
+    const theme = colorScheme === "dark" ? "dark" : "light";
+
+    const styles = StyleSheet.create({
+      containerStyle: {
+        borderBottomWidth: 1.5,
+        borderWidth: 1.5,
+        borderColor: "#ddd",
+        borderRadius: Borders.radius1,
+        height: hp(6.5),
+        width: wp(92),
+      },
+      flagButtonStyle: {
+        width: wp(20),
+      },
+      textContainerStyle: {
+        borderRadius: Borders.radius1,
+        paddingVertical: 0,
+      },
+      textInputStyle: {
+        fontSize: FontSize.small,
+      },
+      errorText: {
+        color: Colors[theme].redText,
+        fontSize: FontSize.extraSmall,
+        marginLeft: wp(1),
+      },
+    });
+
     return (
       <>
         <PhoneInput
@@ -17,37 +49,17 @@ const RnPhoneInput = forwardRef<any, RnPhoneInputProps>(
           layout="second"
           onChangeText={onChangeText}
           onChangeFormattedText={onChangeText}
-          containerStyle={styles.container}
-          textContainerStyle={styles.textInput}
+          containerStyle={styles.containerStyle}
+          textContainerStyle={styles.textContainerStyle}
           flagButtonStyle={styles.flagButtonStyle}
+          textInputStyle={styles.textInputStyle}
+          codeTextStyle={styles.textInputStyle}
         />
         <RnText style={[styles.errorText, errorStyle]}>{error}</RnText>
       </>
     );
   }
 );
-
-const styles = StyleSheet.create({
-  container: {
-    borderBottomWidth: 1.5,
-    borderWidth: 1.5,
-    borderColor: "#ddd",
-    borderRadius: Borders.radius1,
-    height: hp(6.5),
-    width: wp(92),
-  },
-  flagButtonStyle: {
-    width: wp(20),
-  },
-  textInput: {
-    borderRadius: Borders.radius1,
-    paddingVertical: 0,
-  },
-  errorText: {
-    color: "red",
-    marginLeft: wp(1),
-  },
-});
 
 RnPhoneInput.displayName = "RnPhoneInput";
 

@@ -1,11 +1,16 @@
-import styles from "@/app/auth/styles/GetStarted.styles";
+import createStyles from "@/app/auth/styles/GetStarted.styles";
 import RnButton from "@/components/RnButton";
 import Container from "@/components/RnContainer";
 import RnText from "@/components/RnText";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { router } from "expo-router";
 import { Image, TouchableOpacity, View } from "react-native";
 
 export default function GetStarted() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
+
   return (
     <Container>
       <View style={styles.innerContainer}>

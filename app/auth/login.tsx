@@ -1,8 +1,10 @@
-import styles from "@/app/auth/styles/Login.styles";
+import createStyles from "@/app/auth/styles/Login.styles";
 import RnButton from "@/components/RnButton";
 import RnPhoneInput from "@/components/RnPhoneInput";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { setToken } from "@/redux/slices/userSlice";
 import { LoginValues } from "@/types";
 import { SocialIcon } from "@rneui/base";
 import { router } from "expo-router";
@@ -10,6 +12,7 @@ import { Formik } from "formik";
 import { useRef, useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import PhoneInput from "react-native-phone-number-input";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
 const loginSchema = Yup.object().shape({
@@ -17,10 +20,23 @@ const loginSchema = Yup.object().shape({
 });
 
 export default function Login() {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+  const styles = createStyles(theme);
   const [isLoading, setIsLoading] = useState(false);
-
+  const dispatch = useDispatch();
   const handleLogin = async (values: LoginValues) => {
-    console.log("🚀 ~ handleLogin ~ values:", values);
+    setIsLoading(true);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      router.dismissAll();
+      router.push("/(tabs)/home");
+      dispatch(setToken(true));
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const phoneInput = useRef<PhoneInput>(null);

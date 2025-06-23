@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { persistor, store } from "@/redux/store";
 import {
@@ -16,6 +17,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
 
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
@@ -28,6 +30,18 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
+  const styles = StyleSheet.create({
+    main: {
+      flex: 1,
+      backgroundColor: Colors[theme].background,
+    },
+    loadingView: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  });
 
   return (
     <SafeAreaView style={styles.main}>
@@ -44,7 +58,6 @@ export default function RootLayout() {
             value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
           >
             <Stack>
-              <Stack.Screen name="index" options={{ headerShown: false }} />
               <Stack.Screen name="auth" options={{ headerShown: false }} />
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="+not-found" />
@@ -56,14 +69,3 @@ export default function RootLayout() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-  },
-  loadingView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

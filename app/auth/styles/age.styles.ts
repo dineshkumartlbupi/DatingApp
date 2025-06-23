@@ -1,8 +1,9 @@
+import { FontFamily } from "@/constants/FontFamily";
 import { FontSize } from "@/constants/FontSize";
 import { hp, wp } from "@/utils";
 import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+export default (theme: 'light' | 'dark') => StyleSheet.create({
   innerContainer: {
     flex: 1,
     justifyContent: "flex-start",
@@ -10,7 +11,7 @@ export default StyleSheet.create({
   },
   title: {
     fontSize: FontSize.extraLarge,
-    fontWeight: "bold",
+    fontFamily: FontFamily.bold,
     width: wp(80),
     alignSelf: "center",
     marginTop: hp(10),

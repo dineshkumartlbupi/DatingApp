@@ -6,8 +6,8 @@ import RoundButton from '@/components/RoundButton';
 import UserCard from '@/components/UserCard';
 import { Colors } from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
-import { FlatList, TouchableOpacity, View } from 'reaact-native';
 import React, { useState } from 'react';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 type User = {
   id: string;
   name: string;
