@@ -17,10 +17,12 @@ export default function TabLayout() {
         
         headerShown: false,
         tabBarStyle: {
+          borderWidth: 0,
+          borderTopWidth: 0,
           backgroundColor: Colors.light.background,
           height: hp(8),
           marginHorizontal: wp(4),
-          marginBottom: hp(3),
+          marginBottom: hp(2),
           borderRadius: wp(12),
           position: "absolute",
           alignItems: "center", // Align content inside tabBar

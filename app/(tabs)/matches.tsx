@@ -1,14 +1,14 @@
+import styles from '@/app/tabStyles/matches.styles';
 import MatchCard from '@/components/MatchCard';
 import PrimaryHeader from '@/components/PrimaryHeader';
 import ScrollContainer from '@/components/RnScrollContainer';
 import RnText from '@/components/RnText';
 import { Colors } from '@/constants/Colors';
-import { FontSize } from '@/constants/FontSize';
 import { hp, wp } from '@/utils';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
 type Match = {
   id: string;
@@ -77,13 +77,13 @@ export default function Matches() {
   };
 
   return (
-    <ScrollContainer>
+    <ScrollContainer customStyle={{marginTop:hp(3)}}>
       {/* Header */}
     <StatusBar style="dark" backgroundColor={Colors.light.background} />
      <PrimaryHeader
   title="Matches"
   leftIconName="arrow-left"
-  rightIconName="filter"
+
   onLeftPress={()=>console.log('')}
   onRightPress={()=>console.log()}
   titleColor={Colors.light.greenText}
@@ -109,7 +109,7 @@ export default function Matches() {
           <View style={[styles.statCircle, { backgroundColor: Colors.light.greenText }]}>
             <Ionicons name="people" size={20} color={Colors.light.background} />
           </View>
-          <View style={styles.statTextContainer}>
+          <View style={styles.statTextContainers}>
              <RnText style={styles.statLabel}>Connect</RnText>
              <RnText style={styles.statNumber}>{connectCount}</RnText>
          
@@ -120,7 +120,7 @@ export default function Matches() {
 
       {/* Your Matches Section */}
       <View >
-        <View style={styles.statTextContainer}>
+        <View style={styles.statTextContainers}>
                <RnText style={styles.sectionTitle}>Your Matches</RnText>
                <RnText style={[styles.sectionTitle,{color:Colors.light.redText}]}>{totalMatches}</RnText>
         </View>
@@ -156,55 +156,5 @@ export default function Matches() {
   );
 }
 
-const styles =  StyleSheet.create({
-   statsContainer: {
-        flexDirection: 'row',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        marginBottom: hp(3),
-        gap: wp(8),
-      },
-      statItem: {
-        alignItems: 'center',
-        
-      },
-      statCircle: {
-        width: wp(16),
-        height: wp(16),
-        borderRadius: wp(8),
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: hp(1),
-      },
-      statNumber: {
-        fontSize: FontSize.regular,
-        fontWeight: 'bold',
-        color: Colors.light.redText,
-      
-      },
-      statLabel: {
-        fontSize: FontSize.regular,
-        color: Colors.light.greenText,
-      },
-      section: {
-       alignItems:'center'
-      },
-      sectionTitle: {
-        fontSize: FontSize.large,
-        fontWeight: 'bold',
-        color: Colors.light.greenText,
-        marginBottom: hp(2),
-      },
-      matchesList: {
-        paddingBottom: hp(2),
-      },
-      row: {
-        justifyContent: 'center',
-        paddingHorizontal: wp(2),
-      },
-      statTextContainers:{
-        flexDirection:'row',
-        gap:wp(2)
-      }
-})
+
 
