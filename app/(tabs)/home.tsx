@@ -1,4 +1,4 @@
-import styles from "@/app/(tabs)/styles/home.styles";
+import styles from "@/app/tabStyles/home.styles";
 import QuestionCard from "@/components/QuestionCard";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
