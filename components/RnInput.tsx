@@ -1,6 +1,7 @@
 import { Borders } from "@/constants/Borders";
 import { Colors } from "@/constants/Colors";
 import { FontSize } from "@/constants/FontSize";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { RnInputProps } from "@/types";
 import { hp, wp } from "@/utils";
 import { Input } from "@rneui/themed";
@@ -26,6 +27,30 @@ const RnInput: React.FC<RnInputProps> = ({
   leftIcon,
   rightIcon,
 }) => {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
+
+  const styles = StyleSheet.create({
+    errorText: {
+      color: Colors[theme].redText,
+      fontSize: FontSize.extraSmall,
+      marginBottom: hp(2),
+      marginLeft: wp(1),
+    },
+    style: {
+      fontSize: FontSize.small,
+    },
+    containerStyle: {},
+    inputContainerStyle: {
+      borderBottomWidth: 1.5,
+      borderWidth: 1.5,
+      borderColor: "#ddd",
+      borderRadius: Borders.radius1,
+      paddingHorizontal: wp(4),
+      height: hp(6.5),
+    },
+  });
+
   function errorMessage() {
     return <RnText style={[styles.errorText, errorStyle]}>{error}</RnText>;
   }
@@ -52,24 +77,5 @@ const RnInput: React.FC<RnInputProps> = ({
     />
   );
 };
-
-const styles = StyleSheet.create({
-  errorText: {
-    color: Colors.light.redText,
-    fontSize: FontSize.small,
-    marginBottom: hp(2),
-    marginLeft: wp(1),
-  },
-  style: {},
-  containerStyle: {},
-  inputContainerStyle: {
-    borderBottomWidth: 1.5,
-    borderWidth: 1.5,
-    borderColor: "#ddd",
-    borderRadius: Borders.radius1,
-    paddingHorizontal: wp(4),
-    height: hp(6.5),
-  },
-});
 
 export default RnInput;

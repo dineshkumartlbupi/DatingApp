@@ -2,6 +2,7 @@ import { Borders } from "@/constants/Borders";
 import { Colors } from "@/constants/Colors";
 import { FontFamily } from "@/constants/FontFamily";
 import { FontSize } from "@/constants/FontSize";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { RnOtpProps } from "@/types";
 import { hp } from "@/utils/Dimensions";
 import React, { Fragment } from "react";
@@ -13,7 +14,16 @@ import {
 } from "react-native-confirmation-code-field";
 import RnText from "./RnText";
 
-const RnOtp = ({ verifyCode, isError, cell, style, value }: RnOtpProps) => {
+const RnOtp = ({
+  verifyCode,
+  isError,
+  cell,
+  style,
+  value,
+  error,
+}: RnOtpProps) => {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === "dark" ? "dark" : "light";
   const ref = useBlurOnFulfill({ value, cellCount: cell ?? 4 });
 
   const styles = StyleSheet.create({
@@ -25,17 +35,22 @@ const RnOtp = ({ verifyCode, isError, cell, style, value }: RnOtpProps) => {
       height: hp(7),
       fontSize: FontSize.large,
       fontFamily: FontFamily.semiBold,
-      color: Colors.light.blackText,
+      color: Colors[theme].blackText,
       borderWidth: 1,
-      borderColor: isError ? Colors.light.redText : Colors.light.blackText,
+      borderColor: isError ? Colors[theme].redText : Colors[theme].blackText,
       textAlign: "center",
       textAlignVertical: "center",
-      borderRadius: Borders.radius4,
+      borderRadius: Borders.circle,
     },
     focusCell: {
-      borderColor: isError ? Colors.light.redText : Colors.light.primary,
+      borderColor: isError ? Colors[theme].redText : Colors[theme].primary,
       borderWidth: 2,
-      lineHeight: hp(6),
+    },
+    errorText: {
+      color: Colors[theme].redText,
+      fontSize: FontSize.extraSmall,
+      textAlign: "center",
+      marginTop: hp(1),
     },
   });
 
@@ -62,6 +77,7 @@ const RnOtp = ({ verifyCode, isError, cell, style, value }: RnOtpProps) => {
           </Fragment>
         )}
       />
+      {isError && <RnText style={styles.errorText}>{error}</RnText>}
     </View>
   );
 };

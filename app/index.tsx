@@ -5,5 +5,9 @@ import { useSelector } from "react-redux";
 export default function Index() {
   const { token } = useSelector((state: RootState) => state.user);
 
-  return <Redirect href={token ? "/(tabs)" : "/auth/onboarding"} />;
+  if (token) {
+    return <Redirect href="/(tabs)/home" />;
+  } else {
+    return <Redirect href="/auth/onboarding" />;
+  }
 }
