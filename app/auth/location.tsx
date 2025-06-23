@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/location.styles";
+import createStyles from "@/app/authStyles/location.styles";
 import LocationIcon from "@/assets/svg/Location.svg";
 import RnButton from "@/components/RnButton";
 import ScrollContainer from "@/components/RnScrollContainer";

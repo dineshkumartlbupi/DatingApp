@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/GetStarted.styles";
+import createStyles from "@/app/authStyles/getStarted.styles";
 import RnButton from "@/components/RnButton";
 import Container from "@/components/RnContainer";
 import RnText from "@/components/RnText";

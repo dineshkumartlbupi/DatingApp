@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/Login.styles";
+import createStyles from "@/app/authStyles/login.styles";
 import RnButton from "@/components/RnButton";
 import RnPhoneInput from "@/components/RnPhoneInput";
 import ScrollContainer from "@/components/RnScrollContainer";

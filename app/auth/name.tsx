@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/name.styles";
+import createStyles from "@/app/authStyles/name.styles";
 import RnButton from "@/components/RnButton";
 import RnInput from "@/components/RnInput";
 import RnProgressBar from "@/components/RnProgressBar";

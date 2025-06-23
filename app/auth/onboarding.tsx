@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/Onboarding.styles";
+import createStyles from "@/app/authStyles/onboarding.styles";
 import Container from "@/components/RnContainer";
 import RnText from "@/components/RnText";
 import { Colors } from "@/constants/Colors";

@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/gender.styles";
+import createStyles from "@/app/authStyles/gender.styles";
 import FemaleSvg from "@/assets/svg/Female.svg";
 import MaleSvg from "@/assets/svg/Male.svg";
 import OtherSvg from "@/assets/svg/Other.svg";
