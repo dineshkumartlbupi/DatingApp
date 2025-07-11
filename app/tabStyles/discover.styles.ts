@@ -1,10 +1,11 @@
-import { Colors } from "@/constants/Colors";
-import { FontSize } from "@/constants/FontSize";
-import { hp, wp } from "@/utils";
-import { StyleSheet } from "react-native";
+import { Colors } from '@/constants/Colors';
+import { FontSize } from '@/constants/FontSize';
+import { hp, wp } from '@/utils';
+import { StyleSheet } from 'react-native';
 
-export default   StyleSheet.create({
- header: {
+export default StyleSheet.create({
+
+header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -115,4 +116,4 @@ justifyContent:'space-between'
     color:Colors.light.greenText
   }
   
-})
+  });

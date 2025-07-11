@@ -1,13 +1,14 @@
-import { Colors } from "@/constants/Colors";
-import { FontSize } from "@/constants/FontSize";
-import { hp, wp } from "@/utils";
-import { Dimensions, StyleSheet } from "react-native";
+import { Borders } from '@/constants/Borders';
+import { Colors } from '@/constants/Colors';
+import { FontSize } from '@/constants/FontSize';
+import { hp, wp } from '@/utils';
+import { Dimensions, StyleSheet } from 'react-native';
 
+const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 const IMAGE_HEIGHT = hp(60);
 const HEADER_HEIGHT = hp(8);
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
-
-export default StyleSheet.create({
+ 
+ export default StyleSheet.create({
   container: {
      flex: 1,
      backgroundColor: Colors.light.background,
@@ -222,4 +223,63 @@ export default StyleSheet.create({
      justifyContent: 'center',
      alignItems: 'center',
    },
+
+   //modal
+   modalBackground: {
+    height:hp(100),
+    backgroundColor: Colors.light.whiteText,
+    justifyContent: "center",
+    // alignItems: "center",
+  },
+  closeButton: {
+    
+   
+    backgroundColor: Colors.light.whiteText,
+    borderRadius: Borders.radius1,
+    width: wp(10),
+    height: wp(10),
+    borderWidth: 1,
+    borderColor: Colors.light.gray,
+    marginHorizontal: wp(4),
+    marginVertical: hp(2),
+    alignItems:'center',
+    justifyContent :'center'
+   
+  },
+  modalImageContainer: {
+   
+    justifyContent: "center",
+    alignItems: "center",
+    width: wp(100),
+    backgroundColor: Colors.light.whiteText,
+    height:hp(70),
+    marginBottom: hp(2),
+    alignSelf: "center",
+    
+  },
+  modalMainImage: {
+    width: wp(100),
+    height: hp(100),
+    borderRadius: wp(4),
+  },
+  thumbnailList: {
+    // paddingVertical: hp(2),
+    paddingHorizontal: wp(2),
+    alignItems: "center",
+    height: hp(20),
+    justifyContent: "center",
+
+  },
+  thumbnail: {
+    width: wp(18),
+    height: wp(18),
+    borderRadius: wp(2),
+    marginHorizontal: wp(1),
+    borderWidth: 2,
+    borderColor: "transparent",
+    marginBottom: hp(2),
+  },
+  selectedThumbnail: {
+    borderColor: Colors.light.pink,
+  },
 })

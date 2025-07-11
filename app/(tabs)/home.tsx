@@ -1,4 +1,4 @@
-import styles from "@/app/(tabs)/styles/home.styles";
+import styles from "@/app/tabStyles/home.styles";
 import QuestionCard from "@/components/QuestionCard";
 import ScrollContainer from "@/components/RnScrollContainer";
 import RnText from "@/components/RnText";
@@ -119,6 +119,8 @@ export default function Home() {
   const dispatch = useDispatch();
 
   const handleStoryPress = (story: Story) => {
+    router.push(`/mainScreens/storyView`);
+
     if (story.isOwn) {
       console.log("Add your own story");
     } else {
@@ -148,6 +150,7 @@ export default function Home() {
             name="notifications-none"
             size={24}
             color={Colors.dark.greenText}
+            onPress={() => router.push("/mainScreens/matchesList")}
           />
           {hasNotification && <View style={styles.notificationDot} />}
         </TouchableOpacity>

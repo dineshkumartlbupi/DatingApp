@@ -1,17 +1,21 @@
-import styles from "@/app/(tabs)/styles/profile.styles";
+
+import styles from "@/app/tabStyles/profile.styles";
 import InterestTag from "@/components/InterestTag";
 import RnText from "@/components/RnText";
 import RoundButton from "@/components/RoundButton";
 import { Colors } from "@/constants/Colors";
-import { hp } from "@/utils";
+import { hp, wp } from "@/utils";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
 import {
   Animated,
   Dimensions,
+  FlatList,
   Image,
+  Modal,
+  Pressable,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
@@ -45,6 +49,8 @@ const profileData = {
 };
 
 export default function Profile() {
+  const [modalVisible, setModalVisible] = useState(false);
+const [selectedIndex, setSelectedIndex] = useState(0);
   const [showFullAbout, setShowFullAbout] = useState(false);
   const scrollY = useRef(new Animated.Value(0)).current;
 
@@ -155,14 +161,14 @@ export default function Profile() {
           style={styles.actionButton}
           onPress={handleDislikePress}
         >
-          <Ionicons name="close" size={28} color={Colors.light.greenText} />
+          <Ionicons name="close" size={28} color={Colors.light.greenText}/>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[styles.actionButton, styles.likeButton]}
           onPress={handleLikePress}
         >
-          <Ionicons name="heart" size={32} color={Colors.light.whiteText} />
+          <Ionicons name="heart" size={32} color={Colors.light.whiteText}/>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -202,7 +208,6 @@ export default function Profile() {
               style={styles.sendButton}
               onPress={handleSendPress}
             >
-              {/* <Ionicons name="send" size={20} color={Colors.light.redText} /> */}
               <RoundButton
                 iconName="send"
                 iconSize={26}
@@ -266,14 +271,14 @@ export default function Profile() {
           <View style={styles.section}>
             <View style={styles.galleryHeader}>
               <RnText style={styles.sectionTitle}>Gallery</RnText>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => setModalVisible(true)}>
                 <RnText style={styles.seeAll}>See all</RnText>
               </TouchableOpacity>
             </View>
 
             <View style={styles.gallery}>
               <View style={styles.galleryRow}>
-                <TouchableOpacity style={styles.largeGalleryItem}>
+                <TouchableOpacity style={styles.largeGalleryItem} onPress={() => setModalVisible(true)}>
                   <Image
                     source={{ uri: profileData.gallery[0] }}
                     style={styles.galleryImage}
@@ -299,6 +304,58 @@ export default function Profile() {
           </View>
         </View>
       </Animated.ScrollView>
+
+<Modal
+  visible={modalVisible}
+  transparent
+  animationType="fade"
+  onRequestClose={() => setModalVisible(false)}
+>
+  <View style={styles.modalBackground}>
+    {/* Close Button */}
+    <View style={{height:hp(10),width:wp(10)}}>
+       <TouchableOpacity
+      style={styles.closeButton}
+      onPress={() => setModalVisible(false)}
+    >
+      <Ionicons name="arrow-back" size={25} color={Colors.light.pink} />
+    </TouchableOpacity>
+    </View>
+   
+
+    {/* Main Image */}
+    <View style={styles.modalImageContainer}>
+      <Image
+        source={{ uri: profileData.gallery[selectedIndex] }}
+        style={styles.modalMainImage}
+        resizeMode="contain"
+      />
+    </View>
+
+    {/* Thumbnails */}
+    <FlatList
+      data={profileData.gallery}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.thumbnailList}
+      keyExtractor={(_, idx) => idx.toString()}
+      renderItem={({ item, index }) => (
+        <Pressable onPress={() => setSelectedIndex(index)}>
+          <Image
+            source={{ uri: item }}
+            style={[
+              styles.thumbnail,
+              index === selectedIndex && styles.selectedThumbnail,
+            ]}
+          />
+        </Pressable>
+      )}
+    />
+  </View>
+</Modal>
+
     </View>
   );
 }
+
+

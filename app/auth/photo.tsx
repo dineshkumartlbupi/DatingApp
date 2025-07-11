@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/photo.styles";
+import createStyles from "@/app/authStyles/photo.styles";
 import RnAvatar from "@/components/RnAvatar";
 import RnButton from "@/components/RnButton";
 import RnImagePicker from "@/components/RnImagePicker";

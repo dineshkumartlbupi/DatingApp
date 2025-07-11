@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/religion.styles";
+import createStyles from "@/app/authStyles/religion.styles";
 import RnButton from "@/components/RnButton";
 import RnProgressBar from "@/components/RnProgressBar";
 import ScrollContainer from "@/components/RnScrollContainer";

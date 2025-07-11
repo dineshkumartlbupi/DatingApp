@@ -1,9 +1,9 @@
-import { Colors } from "@/constants/Colors";
-import { FontSize } from "@/constants/FontSize";
-import { hp, wp } from "@/utils";
-import { StyleSheet } from "react-native";
+import { Colors } from '@/constants/Colors'
+import { FontSize } from '@/constants/FontSize'
+import { hp, wp } from '@/utils'
+import { StyleSheet } from 'react-native'
 
-export default   StyleSheet.create({
+export default StyleSheet.create({
  titleContainer: {
     flexDirection: 'row',
     paddingVertical: hp(2),

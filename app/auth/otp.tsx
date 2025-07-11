@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/otp.styles";
+import createStyles from "@/app/authStyles/otp.styles";
 import RnButton from "@/components/RnButton";
 import RnOtp from "@/components/RnOtp";
 import RnProgressBar from "@/components/RnProgressBar";

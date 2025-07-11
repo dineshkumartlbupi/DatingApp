@@ -1,4 +1,5 @@
-import styles from '@/app/(tabs)/styles/discover.styles';
+
+import styles from '@/app/tabStyles/discover.styles';
 import InterestTag from '@/components/InterestTag';
 import ScrollContainer from '@/components/RnScrollContainer';
 import RnText from '@/components/RnText';

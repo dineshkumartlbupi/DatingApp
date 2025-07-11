@@ -1,4 +1,4 @@
-import createStyles from "@/app/auth/styles/email.styles";
+import createStyles from "@/app/authStyles/email.styles";
 import RnButton from "@/components/RnButton";
 import RnInput from "@/components/RnInput";
 import RnProgressBar from "@/components/RnProgressBar";

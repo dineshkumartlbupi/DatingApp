@@ -1,11 +1,10 @@
-import { Colors } from "@/constants/Colors";
-import { FontSize } from "@/constants/FontSize";
-import { hp, wp } from "@/utils";
-import { StyleSheet } from "react-native";
+import { Colors } from '@/constants/Colors';
+import { FontSize } from '@/constants/FontSize';
+import { hp, wp } from '@/utils';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-   
-      statsContainer: {
+   statsContainer: {
         flexDirection: 'row',
         // justifyContent: 'center',
         // alignItems: 'center',
@@ -50,8 +49,9 @@ export default StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: wp(2),
       },
-      statTextContainer:{
+      statTextContainers:{
         flexDirection:'row',
         gap:wp(2)
       }
 })
+
